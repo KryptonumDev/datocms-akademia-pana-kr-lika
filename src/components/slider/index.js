@@ -25,7 +25,6 @@ export default function Slider({ children, data: { breakPoints, controlsData } }
             <Controls
                 data={controlsData}
                 innerData={{ breakPoints, canLeft: innerData.canLeft, canRight: innerData.canRight, positionSet: innerData.positionSet, position: innerData.position }}
-                style={currBreakPoint.controlsStyle}
             />
         </React.Fragment>
     )

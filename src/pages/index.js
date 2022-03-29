@@ -1,13 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Slider from "../components/slider"
 
 export default function Index({ data }) {
 
   return (
-    <>
-    </>
-  );
+    <></>
+  )
 }
 
 export const query = graphql`

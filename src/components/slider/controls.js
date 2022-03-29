@@ -1,11 +1,9 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-export default function Controls({ data, innerData, style }) {
+export default function Controls({ data, innerData }) {
 
     const { canLeft, canRight, positionSet, position, breakPoints } = innerData
-
-    // const style = {width, height, color, hoverAnimation, transition}
 
     return (
         <React.Fragment>
