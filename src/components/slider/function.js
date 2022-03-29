@@ -1,23 +1,21 @@
-import React from 'react'
-import styled from 'styled-components'
+import { useEffect, useState } from 'react'
+import { useSwipeable } from 'react-swipeable';
 
-export default function Slider(data) {
+export default function Function({ defaultPosition, itemsCount, currBreakPoint }) {
 
-    const { breakPoints, defaultPosition } = data
-
-    const windowWidth = (typeof window !== "undefined") ? window.innerWidth : 0
-
-    const [position, positionSet] = useState(0);
+    const [position, positionSet] = useState(defaultPosition);
 
     const [canRight, changeCanRight] = useState(false);
     const [canLeft, changeCanLeft] = useState(false);
 
-    useEffect(() => { //TODO: breakPoints map
+    useEffect(() => {
         if (typeof window !== "undefined") {
-            if (position >= (windowWidth <= sliderBreackPoint ? windowWidth <= secondBreackPoint ? testimonials.length - 1 : testimonials.length - 2 : testimonials.length - 3) && position <= 0) {
+            let lastSlideNumber = itemsCount - currBreakPoint.showCount
+
+            if (position >= lastSlideNumber && position <= 0) {
                 changeCanLeft(false)
                 changeCanRight(false)
-            } else if (position >= (windowWidth <= sliderBreackPoint ? windowWidth <= secondBreackPoint ? testimonials.length - 1 : testimonials.length - 2 : testimonials.length - 3)) {
+            } else if (position >= lastSlideNumber) {
                 changeCanRight(false)
                 changeCanLeft(true)
             } else if (position <= 0) {

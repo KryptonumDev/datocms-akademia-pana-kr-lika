@@ -1,39 +1,37 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export default function Controls({ data, innerData, style }) {
 
-    const data = {
-        left: { label, name, arrowImg: { url, alt } },
-        right: { label, name, arrowImg: { url, alt } }
-    }
-    const innerData = { canLeft, canRight, positionSet }
+    const { canLeft, canRight, positionSet, position, breakPoints } = innerData
 
-    const style = {width, height, color, hoverAnimation}
+    // const style = {width, height, color, hoverAnimation, transition}
 
     return (
         <React.Fragment>
             <SliderControls
                 left
-                aria-label="slider scroll left"
-                name="poprzedni artykuł"
+                breakPoints={breakPoints}
+                aria-label={data.left.label}
+                name={data.left.name}
                 disabled={!canLeft}
                 onClick={() => {
                     positionSet(position - 1);
                 }}
             >
-                <img src={ArrowLeft} alt='strzałka slidera lewa' />
+                <img src={data.left.arrowImg.url} alt={data.left.arrowImg.alt} />
             </SliderControls>
             <SliderControls
                 right
-                aria-label="slider scroll right"
-                name="następny artykuł"
+                breakPoints={breakPoints}
+                aria-label={data.right.label}
+                name={data.right.name}
                 disabled={!canRight}
                 onClick={() => {
                     positionSet(position + 1);
                 }}
             >
-                <img src={ArrowRight} alt='strzałka slidera prawa' />
+                <img src={data.right.arrowImg.url} alt={data.right.arrowImg.alt} />
             </SliderControls>
         </React.Fragment>
     )
@@ -45,31 +43,29 @@ const SliderControls = styled.button`
     position: absolute;
     left: ${props => props.left ? '0' : 'unset'};
     right: ${props => props.right ? '0' : 'unset'};
+    width: 60px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 4px solid var(--primary-navy);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .2s linear;
+    cursor: pointer;
+    background-color: transparent;
 
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: 4px solid var(--primary-navy);
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        transition: opacity .2s linear;
-        cursor: pointer;
-        background-color: #FFF;
+    &:hover{
 
-        &:hover{
-
-        }
-
-        &:disabled{
-            opacity: .5;
-        }
-
-    @media (max-width: 1180px){
-        top: 0;
-        transform: translateY(-100%) scale(.5) ${props => props.left ? 'translateX(-200%)' : 'translateX(200%)'};
-        left: ${props => props.left ? '50%' : 'unset'};
-        right: ${props => props.right ? '50%' : 'unset'};
     }
+
+    &:disabled{
+        opacity: .5;
+    }
+    
+    ${props => props.breakPoints.map(el => css`
+        @media (max-width: ${el.width}px) {
+            ${el.controlsStyle}
+        }
+    `)}
 `
 

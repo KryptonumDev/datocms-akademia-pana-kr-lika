@@ -1,37 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Function from './function'
 import Controls from './controls'
 import Track from './track'
+import { getCurrentBreakPoint } from './helpers/get-current-breackpoint'
 
-export default function Slider({ element, data }) {
+export default function Slider({ children, data: { breakPoints, controlsData } }) {
 
-    //TODO: breakpoints style
+    const currBreakPoint = getCurrentBreakPoint(breakPoints)
+    const itemsCount = children.length
 
-    //IDEA: slide count to scroll, 
-
-    const { breakPoints, defaultPosition, controlsData, controlsStyle } = data
-
-    // controlsData = left: { label, name, arrowImg: { url, alt } },
-    //                 right: { label, name, arrowImg: { url, alt } }
-
-    // controlsStyle = {width, height, color, hoverAnimation}
-
-    const innerData = Function({ breakPoints: [], defaultPosition })
+    const innerData = Function({ defaultPosition: currBreakPoint.defaultPosition, itemsCount, currBreakPoint })
 
     return (
         <React.Fragment>
             <Track
                 handlers={innerData.handlers}
                 breakPoints={breakPoints}
+                position={innerData.position}
+                itemsCount={itemsCount}
+                currBreakPoint={currBreakPoint}
             >
-                {element}
+                {children}
             </Track>
             <Controls
                 data={controlsData}
-                innerData={{ canLeft: innerData.canLeft, canRight: innerData.canRight, positionSet: innerData.positionSet }}
-                style={controlsStyle}
+                innerData={{ breakPoints, canLeft: innerData.canLeft, canRight: innerData.canRight, positionSet: innerData.positionSet, position: innerData.position }}
+                style={currBreakPoint.controlsStyle}
             />
         </React.Fragment>
     )
 }
 
+    //IDEA: slide count to scroll, 
