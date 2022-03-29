@@ -3,11 +3,11 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 
-export default function SliderItem({ children, data: { position } }) {
+export default function SliderItem({ children, data: { position, gap } }) {
     return (
         <Item
             animate={{
-                left: `calc(${position} * (-100% - 25px))`,
+                left: `calc(${position} * (-100% - ${gap}))`,
             }}
             transition={{
                 ease: 'easeOut',
