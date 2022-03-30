@@ -4,7 +4,7 @@ import SliderItem from './slider-item'
 
 export default function Track({ children, handlers, breakPoints, position, itemsCount, currBreakPoint }) {
 
-    const childrens = [...children]
+    const childrens = [...children] // useMemo
 
     return (
         <Slider currBreakPoint={currBreakPoint} breakPoints={breakPoints} itemsCount={itemsCount}>
@@ -21,10 +21,10 @@ export default function Track({ children, handlers, breakPoints, position, items
     )
 }
 
-
 const Slider = styled.div`
     padding: 0 100px;
     position: relative;
+
     .slider{
         display: grid;
         width: 100%;

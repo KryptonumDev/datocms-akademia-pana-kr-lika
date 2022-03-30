@@ -22,28 +22,11 @@ export const query = graphql`
       slug
       content {
         value
-        blocks {
-          __typename
-          id: originalId
-          image {
-            gatsbyImageData(width: 700)
-          }
-        }
+        blocks 
       }
       date
       coverImage {
         gatsbyImageData(width: 1500)
-      }
-      author {
-        name
-        picture {
-          gatsbyImageData(
-            layout: FIXED
-            width: 48
-            height: 48
-            imgixParams: { sat: -100 }
-          )
-        }
       }
     }
     morePosts: allDatoCmsPost(
@@ -58,17 +41,6 @@ export const query = graphql`
         date
         coverImage {
           small: gatsbyImageData(width: 760)
-        }
-        author {
-          name
-          picture {
-            gatsbyImageData(
-              layout: FIXED
-              width: 48
-              height: 48
-              imgixParams: { sat: -100 }
-            )
-          }
         }
       }
     }
