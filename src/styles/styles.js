@@ -43,5 +43,29 @@ export const StyledLink = styled(Link)`
 `
 
 export const OutlinedLink = styled(Link)`
+    display: block;
+    width: fit-content;
+    padding: 13.5px 31px;
+    border-radius: 100px;
+    background-color: #fff;
+    border: 1px solid rgba(18, 17, 39, 0.12);
+    transition: background-color .2s cubic-bezier(0.215, 0.610, 0.355, 1), color .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+    color: #0E1F41;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 170%;
+    text-align: center;
+
+    &:hover{
+        background-color: rgba(18, 17, 39, 0.04);
+    }
+
+    &:focus{
+        background-color: rgba(18, 17, 39, 0.04);
+    }
+
+    &:disabled{
+        color: rgba(18, 17, 39, 0.32);
+    }
 
 `

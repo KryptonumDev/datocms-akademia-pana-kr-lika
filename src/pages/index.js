@@ -3,13 +3,15 @@ import { graphql } from "gatsby";
 import Hero from "../components/parents/hero-main-page";
 import TwoColumnRepeater from "../components/parents/two-column-repeater";
 import Testomontials from "../components/parents/testomontials";
+import Blog from "../components/parents/blog";
 
 export default function Index({ data: { datoCmsHomepage, allPosts } }) {
   return (
     <main>
       <Hero data={datoCmsHomepage.heroSection[0]} />
       <TwoColumnRepeater data={datoCmsHomepage.repeater[0]} repeaterType="button" />
-      <Testomontials  data={datoCmsHomepage.opinje[0]}/>
+      <Testomontials data={datoCmsHomepage.opinje[0]} />
+      <Blog data={datoCmsHomepage.blog[0]} />
     </main>
   )
 }

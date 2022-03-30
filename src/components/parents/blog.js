@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Container } from '../../styles/styles'
+import { Container, OutlinedLink } from '../../styles/styles'
 
 export default function Blog({ data: { title, linkText, linkUrl } }) {
     return (
@@ -8,7 +8,7 @@ export default function Blog({ data: { title, linkText, linkUrl } }) {
             <Container>
                 <Flex>
                     <Title>{title}</Title>
-
+                    <OutlinedLink to={linkUrl}>{linkText}</OutlinedLink>
                 </Flex>
             </Container>
         </Wrapper>
