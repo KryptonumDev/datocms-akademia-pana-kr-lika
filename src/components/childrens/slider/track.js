@@ -5,7 +5,7 @@ import SliderItem from './slider-item'
 export default function Track({ children, handlers, breakPoints, position, itemsCount, currBreakPoint }) {
 
     const childrens = [...children] // useMemo
-
+    
     return (
         <Slider currBreakPoint={currBreakPoint} breakPoints={breakPoints} itemsCount={itemsCount}>
             <div {...handlers}>
@@ -22,7 +22,6 @@ export default function Track({ children, handlers, breakPoints, position, items
 }
 
 const Slider = styled.div`
-    padding: 0 100px;
     position: relative;
 
     .slider{
@@ -32,7 +31,7 @@ const Slider = styled.div`
     
     ${props => props.breakPoints.map(el => css`
         @media (max-width: ${el.width}px) {
-            padding: ${el.padding};
+            padding: ${el.sidePadding};
 
             .slider{
                 grid-template-columns: ${({ itemsCount }) => 'repeat(' + itemsCount + ', calc(' + (100 / el.showCount) + '% - ' + el.gap + 'px))'};

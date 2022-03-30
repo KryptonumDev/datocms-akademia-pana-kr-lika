@@ -3,7 +3,7 @@ import { useSwipeable } from 'react-swipeable';
 
 export default function Function({ defaultPosition, itemsCount, currBreakPoint }) {
 
-    const [position, positionSet] = useState(defaultPosition);
+    const [position, positionSet] = useState(0);
 
     const [canRight, changeCanRight] = useState(false);
     const [canLeft, changeCanLeft] = useState(false);

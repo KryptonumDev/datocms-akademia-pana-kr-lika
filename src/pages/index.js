@@ -1,12 +1,15 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Hero from "../components/parents/hero-main-page";
+import TwoColumnRepeater from "../components/parents/two-column-repeater";
+import Testomontials from "../components/parents/testomontials";
 
 export default function Index({ data: { datoCmsHomepage, allPosts } }) {
-  debugger
   return (
     <main>
       <Hero data={datoCmsHomepage.heroSection[0]} />
+      <TwoColumnRepeater data={datoCmsHomepage.repeater[0]} repeaterType="button" />
+      <Testomontials  data={datoCmsHomepage.opinje[0]}/>
     </main>
   )
 }

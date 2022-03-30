@@ -5,9 +5,17 @@ export const Container = styled.div`
     max-width: 1304px;
     margin: 0 auto;
     padding: 0 32px; 
+
+    @media(max-width: 876px){
+        overflow: hidden;
+    }
+
+    @media(max-width: 500px){
+        padding: 0 16px; 
+    }
 `
 
-export const StyledLink = styled.div`
+export const StyledLink = styled(Link)`
     display: block;
     width: fit-content;
     padding: 14.5px 32px;
@@ -32,4 +40,8 @@ export const StyledLink = styled.div`
     &:disabled{
         background-color: #DB2777;
     }
+`
+
+export const OutlinedLink = styled(Link)`
+
 `

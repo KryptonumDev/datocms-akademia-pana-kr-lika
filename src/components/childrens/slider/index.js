@@ -3,6 +3,7 @@ import Function from './function'
 import Controls from './controls'
 import Track from './track'
 import { getCurrentBreakPoint } from './helpers/get-current-breackpoint'
+import Dots from './dots'
 
 export default function Slider({ children, data: { breakPoints, controlsData } }) {
 
@@ -22,6 +23,11 @@ export default function Slider({ children, data: { breakPoints, controlsData } }
             >
                 {children}
             </Track>
+            <Dots
+                itemsCount={itemsCount}
+                positionSet={innerData.positionSet}
+                position={innerData.position}
+            />
             <Controls
                 data={controlsData}
                 innerData={{ breakPoints, canLeft: innerData.canLeft, canRight: innerData.canRight, positionSet: innerData.positionSet, position: innerData.position }}

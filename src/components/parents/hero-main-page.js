@@ -44,6 +44,10 @@ const Title = styled.h1`
     line-height: 100%;
     letter-spacing: -2px;
     color: #203662;
+
+    @media (max-width: 500px) {
+        letter-spacing: -1.5px;
+    }
 `
 
 const LocLink = styled(StyledLink)`
