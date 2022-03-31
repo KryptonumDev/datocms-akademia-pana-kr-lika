@@ -1,9 +1,10 @@
 export const IMAGES_TYPES = {
-    TYPE_ONE: 'first',
-    TYPE_TWO: 'second',
-    TYPE_DOUBLED: 'doubled',
-    TYPE_THREE: 'third',
-    TYPE_FOUR: 'fourth'
+    TYPE_ONE: 'pierwszy',
+    TYPE_TWO: 'drugi',
+    TYPE_THREE: 'trzeci',
+    TYPE_DOUBLED: 'podwojny',
+    TYPE_FOUR: 'zespol-pierwszy',
+    TYPE_FIVE: 'zespol-drugi'
 }
 
 export const REPEATER_TYPES = {

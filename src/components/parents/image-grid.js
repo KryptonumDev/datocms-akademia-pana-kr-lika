@@ -133,15 +133,15 @@ const Image = styled(GatsbyImage)`
     border-radius: 25px;
 
     :nth-child(1){
-        grid-area: b;
+        grid-area: a;
     }
 
     :nth-child(2){
-        grid-area: c;
+        grid-area: b;
     }
 
     :nth-child(3) {
-        grid-area: a;
+        grid-area: c;
     }
 
 `
