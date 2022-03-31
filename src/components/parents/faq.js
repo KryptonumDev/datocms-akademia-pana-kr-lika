@@ -14,7 +14,7 @@ export default function Faq({ data: { gatsbyImage, questions } }) {
                     </ImgContainer>
                     <QuestionsContainer>
                         {questions.map(el => (
-                            <QuestionWrapper>
+                            <QuestionWrapper key={el.answer}>
                                 <Question>
                                     {el.question}
                                 </Question>

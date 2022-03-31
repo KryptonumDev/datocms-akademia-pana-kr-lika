@@ -1,4 +1,5 @@
 import React from 'react'
+import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
 import { StyledLink } from '../../../styles/styles'
 
@@ -6,7 +7,7 @@ export default function TextTypeButton({ linkText, linkUrl, text, title }) {
     return (
         <Wrapper className='textPart'>
             <Title>{title}</Title>
-            <Text>{text}</Text>
+            <Text><StructuredText data={text} /></Text>
             <Link to={linkUrl}>{linkText}</Link>
         </Wrapper>
     )
@@ -24,12 +25,14 @@ const Title = styled.h3`
     color: #203662;
 `
 
-const Text = styled.p`
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 170%;
-    color: #838B98;
-    margin: 32px 0;
+const Text = styled.div`
+    p{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 170%;
+        color: #394C71;
+        margin: 32px 0;
+    }
 `
 
 const Link = styled(StyledLink)`

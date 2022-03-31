@@ -8,7 +8,7 @@ export default function Blog({ data: { title, linkText, linkUrl } }) {
             <Container>
                 <Flex>
                     <Title>{title}</Title>
-                    <OutlinedLink to={linkUrl}>{linkText}</OutlinedLink>
+                    <Link to={linkUrl}>{linkText}</Link>
                 </Flex>
             </Container>
         </Wrapper>
@@ -22,6 +22,10 @@ const Wrapper = styled.section`
 const Flex = styled.div`
     display: flex;
     justify-content: space-between;
+
+    @media(max-width: 764px){
+        display: block;
+    }
 `
 
 const Title = styled.h2`
@@ -30,4 +34,14 @@ const Title = styled.h2`
     line-height: 100%;
     letter-spacing: -1px;
     color: #203662;
+    
+    @media(max-width: 764px){
+        margin-bottom: 30px;
+    }
+`
+
+const Link = styled(OutlinedLink)`
+    @media(max-width: 500px){
+        width: 100%;
+    }
 `

@@ -31,19 +31,23 @@ export const query = graphql`
       repeater {
         title
         repeater {
-          imgType
-          img {
-            gatsbyImageData
-            alt
+          ... on DatoCmsRepeaterTwoColumnWithButton {
+            imgType
+            img {
+              gatsbyImageData
+              alt
+            }
+            additionalImage {
+              alt
+              gatsbyImageData
+            }
+            title
+            textParagraph{
+              value
+            }
+            linkText
+            linkUrl
           }
-          additionalImage {
-            alt
-            gatsbyImageData
-          }
-          title
-          text
-          linkText
-          linkUrl
         }
       }
       opinje {

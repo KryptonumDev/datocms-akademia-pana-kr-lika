@@ -17,7 +17,11 @@ export default function Layout({ children }) {
                 }
                 socialLinks {
                     icon
+                    link
                     ariaLabel
+                }
+                authors{
+                    value
                 }
             }
         }

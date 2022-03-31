@@ -13,7 +13,7 @@ export default function Testomontials({ data: { title, opinji } }) {
                 <Title>{title}</Title>
                 <Slider data={testomontialsSliderData}>
                     {opinji.map(el => (
-                        <React.Fragment>
+                        <React.Fragment key={el.autor}>
                             <SliderItem>
                                 <TextPart>
                                     <TestomontialsQuote />
@@ -72,7 +72,7 @@ const QuoteText = styled.p`
     font-weight: 500;
     font-size: clamp(16px, 3vw, 20px);
     line-height: 180%;
-    color: #838B98;
+    color: #394C71;
     margin: 30px 0;
 `
 
@@ -105,7 +105,7 @@ const QuotePlace = styled.span`
     font-weight: 500;
     font-size: clamp(14px, 2.8vw, 16px);
     line-height: 170%;
-    color: #838B98; 
+    color: #394C71; 
     margin-top: 8px;
 `
 
