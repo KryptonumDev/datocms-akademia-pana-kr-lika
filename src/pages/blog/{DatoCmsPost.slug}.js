@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-export default function Post({ data }) {
+export default function Post({ data: { post, morePosts: { nodes: morePosts } } }) {
+  debugger
   return (
     <></>
   );
@@ -9,17 +10,16 @@ export default function Post({ data }) {
 
 export const query = graphql`
   query PostBySlug($id: String) {
-    site: datoCmsSite {
-      favicon: faviconMetaTags {
-        ...GatsbyDatoCmsFaviconMetaTags
-      }
-    }
     post: datoCmsPost(id: { eq: $id }) {
       seo: seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
       title
       slug
+      category {
+        slug
+        name
+      }
       content {
         value
         blocks 
@@ -37,7 +37,7 @@ export const query = graphql`
       nodes {
         title
         slug
-        excerpt
+        shortText
         date
         coverImage {
           small: gatsbyImageData(width: 760)

@@ -5,8 +5,8 @@ import ImageTypeDoubled from './image-type-doubled'
 import { IMAGES_TYPES, REPEATER_TYPES } from '../../../constants/types'
 import TextTypeButton from './text-type-button'
 import TextTypeClassic from './text-type-classic'
-import ImageTypeFour from './image-type-four'
 import ImageTypeFive from './image-type-five'
+import ImageTypeFour from './image-type-four'
 import ImageTypeThree from './image-type-three'
 
 export const ImagePart = ({ imgType, mainImg, additionalImg }) => {
@@ -33,7 +33,7 @@ export const TextPart = ({ repeaterType, linkText, linkUrl, text, title }) => {
     switch (repeaterType) {
         case REPEATER_TYPES.BUTTON:
             return <TextTypeButton linkText={linkText} linkUrl={linkUrl} text={text} title={title} />
-        case REPEATER_TYPES.CLASSIC:
+        case REPEATER_TYPES.PERSONS:
             return <TextTypeClassic text={text} title={title} />
         case REPEATER_TYPES.SOLO:
             return <TextTypeClassic text={text} title={title} />

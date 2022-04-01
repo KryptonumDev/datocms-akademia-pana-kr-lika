@@ -9,7 +9,7 @@ export const IMAGES_TYPES = {
 
 export const REPEATER_TYPES = {
     BUTTON: 'button',
-    CLASSIC: 'classic',
+    PERSONS: 'persons',
     SOLO: 'solo',
     LIST: 'list'
 }

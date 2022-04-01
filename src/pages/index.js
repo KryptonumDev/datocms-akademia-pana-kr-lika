@@ -5,13 +5,13 @@ import TwoColumnRepeater from "../components/parents/two-column-repeater";
 import Testomontials from "../components/parents/testomontials";
 import Blog from "../components/parents/blog";
 
-export default function Index({ data: { datoCmsHomepage, allPosts } }) {
+export default function Index({ data: { datoCmsHomepage, posts } }) {
   return (
     <main>
       <Hero data={datoCmsHomepage.heroSection[0]} />
       <TwoColumnRepeater data={datoCmsHomepage.repeater[0]} repeaterType="button" />
       <Testomontials data={datoCmsHomepage.opinje[0]} />
-      <Blog data={datoCmsHomepage.blog[0]} />
+      <Blog posts={posts} data={datoCmsHomepage.blog[0]} />
     </main>
   )
 }
@@ -68,11 +68,11 @@ export const query = graphql`
         linkUrl
       }
     }
-    allPosts: allDatoCmsPost(sort: { fields: date, order: DESC }, limit: 2) {
+    posts: allDatoCmsPost(sort: { fields: date, order: DESC }, limit: 2) {
       nodes {
         title
         slug
-        excerpt
+        shortText
         date
         coverImage {
           large: gatsbyImageData(width: 1500)

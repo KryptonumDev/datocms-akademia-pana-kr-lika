@@ -1,14 +1,14 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { TypeThreeLeft, TypeThreeRight } from '../../../resources/svg'
+import { TypeFourLeft, TypeFourRight } from '../../../resources/svg'
 
-export default function ImageTypeFour({ mainImage }) {
+export default function ImageTypeFive({ mainImage }) {
     return (
         <Wrapper className='imgPart'>
-            <TypeThreeLeft />
+            <TypeFourLeft />
             <Image image={mainImage.gatsbyImageData} />
-            <TypeThreeRight />
+            <TypeFourRight />
         </Wrapper>
     )
 }
@@ -53,8 +53,9 @@ const Image = styled(GatsbyImage)`
    max-width: 500px;
    width: 100%;
    aspect-ratio: 1/1;
+
    @media (max-width:500px){
+       margin-left: 60px;
        width: unset;
-       margin: 0 30px;
    }
 `
