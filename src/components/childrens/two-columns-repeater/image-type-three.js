@@ -1,14 +1,14 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { TypeOneLeft, TypeOneRight } from '../../../resources/svg'
+import { TypeThreeLeft, TypeThreeRight } from '../../../resources/svg'
 
-export default function ImageTypeOne({ mainImage }) {
+export default function ImageTypeThree({ mainImage }) {
     return (
         <Wrapper className='imgPart'>
-            <TypeOneLeft />
-            <TypeOneRight />
+            <TypeThreeLeft />
             <Image image={mainImage.gatsbyImageData} />
+            <TypeThreeRight />
         </Wrapper>
     )
 }
@@ -18,17 +18,17 @@ const Wrapper = styled.div`
     flex: 50% 0 0;
     .left{
         position: absolute;
-        z-index: 1;
+        z-index: 3;
         left: -34px;
-        top: -45px;
+        top: -55px;
         transform-origin: 0 0;
     }
 
     .right{
         position: absolute;
-        z-index: 3;
-        right: -25px;
-        bottom: -27px;
+        z-index: 1;
+        right: -107px;
+        bottom: -45px;
         transform-origin: 100% 100%;
     }
 

@@ -25,7 +25,11 @@ export default function TwoColumnRepeater({ repeaterType, data: { title, repeate
 }
 
 const Wrapper = styled.section`
-
+    overflow: hidden;
+    padding-bottom: 100px;
+    margin-bottom: -100px;
+    padding-top: 100px;
+    margin-top: -100px;
 `
 
 const Title = styled.h2`
@@ -47,7 +51,7 @@ const Item = styled.div`
     position: relative;
 
 
-    ${({ repeaterType }) => repeaterType === 'classic' && css`
+    ${({ repeaterType }) => repeaterType === 'persons' && css`
     :nth-child(2n - 1) {
         flex-direction: row-reverse; 
         .imgPart{
@@ -150,19 +154,121 @@ const Item = styled.div`
     }
     `}
 
+    ${({ repeaterType }) => repeaterType === 'solo' && css`
+    :nth-child(2n - 1){
+        flex-direction: row-reverse;
+        .imgPart{
+            margin-left: 30px;
+        }
 
+        &::before{
+            content: "";
+            border-radius: 25px;
+            width: 80%;
+            max-width: 872px;
+            margin: 0 auto;
+            position: absolute;
+            z-index: -1;
+            top: -40px;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFFBED;
+        }
+    }
+    :nth-child(2n){
+        .imgPart{
+            margin-right: clamp(50px, 7.6vw, 110px);
+        }
+    }
 
-@media(max-width: 876px) {
-    flex-direction: column;
-    max-width: 630px;
-    margin: clamp(100px, 25vw, 160px) auto 0;
-}
+    @media(max-width: 1023px){
 
-@media(max-width: 700px) {
+        .imgPart{
+            margin: 0;
+        }
+
+        :nth-child(2n - 1){
+            flex-direction: column;
+            margin: 90px clamp(0px,7vw,100px) 0 clamp(0px,7vw,100px);
+
+            .imgPart{
+                margin: 0;
+            }
+            &::before{
+                display: none;
+            }
+        }
+
+        :nth-child(2n){
+            flex-direction: column;
+            margin: 90px clamp(0px,7vw,100px) 0 clamp(0px,7vw,100px);
+
+            .imgPart{
+                margin: 0;
+            }
+
+            
+        }
+    }
+    
+
+    @media(max-width: 764px){
+        :nth-child(n){
+            max-width: unset;
+            margin: 90px 0 0 0;
+
+            .textPart{
+                margin-top: 60px;
+            }
+        }
+
+    }
+    
+    `}
+
+    ${({ repeaterType }) => repeaterType === 'list' && css`
+    :nth-child(2n - 1){
+        flex-direction: row-reverse;
+        .imgPart{
+            margin-left: 30px;
+        }
+    }
+    :nth-child(2n){
         
-}
+        .imgPart{
+            margin-right: clamp(50px, 7.6vw, 110px);
+        }   
+    }
 
-@media(max-width: 500px) {
-        
-}
+    @media(max-width: 876px){
+        .textPart{
+            margin-top: 60px;
+        }
+
+        .imgPart{
+            margin: 0 !important;
+        }
+
+        :nth-child(n){
+            flex-direction: column;
+
+            .imgPart{
+                margin: 0;
+            }
+        }
+    }
+
+    @media (max-width: 700px) {
+    }
+
+    @media (max-width: 500px) {
+    }
+    `}
+
+    @media(max-width: 876px) {
+        flex-direction: column;
+        max-width: 630px;
+        margin: clamp(100px, 25vw, 160px) auto 0;
+    }
 `   

@@ -10,7 +10,7 @@ export default function About({ data: { datoCmsONasPage } }) {
   return (
     <main>
       <Hero data={datoCmsONasPage.sekcjaPowitalna[0]} />
-      <TwoColumnRepeater repeaterType='classic' data={datoCmsONasPage.repater[0]} />
+      <TwoColumnRepeater repeaterType='persons' data={datoCmsONasPage.repater[0]} />
       <Testomontials data={datoCmsONasPage.testomontials[0]} />
       <ImageGrid data={datoCmsONasPage.images[0]} />
       <Kontakt data={datoCmsONasPage.kontakt[0]} />

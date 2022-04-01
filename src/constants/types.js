@@ -9,7 +9,9 @@ export const IMAGES_TYPES = {
 
 export const REPEATER_TYPES = {
     BUTTON: 'button',
-    CLASSIC: 'classic'
+    CLASSIC: 'classic',
+    SOLO: 'solo',
+    LIST: 'list'
 }
 
 export const SOCIAL_ICONS = {

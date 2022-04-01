@@ -1,6 +1,7 @@
 import React from 'react'
 import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
+import Arrow from './../../../resources/arrow.svg'
 
 export default function TextTypeClassic({ text, title }) {
     return (
@@ -12,7 +13,10 @@ export default function TextTypeClassic({ text, title }) {
 }
 
 const Wrapper = styled.div`
-    margin-top: 50px;
+
+    @media (max-width: 876px){
+        margin-top: 50px;
+    }
 
     @media (max-width: 764px) {
         margin-top: 120px;
@@ -34,5 +38,29 @@ const Text = styled.div`
         line-height: 170%;
         color: #394C71;
         margin: 32px 0;
+    }
+
+    ul{
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 16px;
+
+        li{
+            padding-left: 40px;
+            position: relative;
+
+            &::before{
+                content: url(${Arrow});
+                position: absolute;
+                left: 0;
+                top: 0;
+                transform: translateY(16%);
+            }
+
+            p{
+                margin: 0;
+            }
+        }
     }
 `

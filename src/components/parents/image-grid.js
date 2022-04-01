@@ -29,6 +29,7 @@ const Wrapper = styled.div`
 `
 
 const LocContainer = styled(Container)`
+    overflow: hidden;
     padding-bottom: 100px;
     margin-bottom: -100px;
 `
