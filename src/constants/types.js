@@ -19,3 +19,8 @@ export const SOCIAL_ICONS = {
     TWITTER: 'twitter',
     INSTAGRAM: 'instagram'
 }
+
+export const NAVIGATION = {
+    CLASSICK: 'DatoCmsRepeaterNavigationClassick',
+    MEGA: "DatoCmsRepeaterNavigationMegaMenu"
+}

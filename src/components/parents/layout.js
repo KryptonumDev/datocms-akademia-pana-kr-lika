@@ -1,6 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import Footer from './footer'
+import Header from './header'
 
 export default function Layout({ children }) {
     const { datoCmsFooter, datoCmsHeader } = useStaticQuery(graphql`
@@ -24,12 +25,40 @@ export default function Layout({ children }) {
                     value
                 }
             }
+            datoCmsHeader {
+                logo {
+                  gatsbyImageData
+                  alt
+                }
+                menu {
+                  ... on DatoCmsRepeaterNavigationClassick {
+                    __typename
+                    id
+                    name
+                    slug
+                  }
+                  ... on DatoCmsRepeaterNavigationMegaMenu {
+                    __typename
+                    id
+                    title
+                    slug
+                    menuItem {
+                      slug
+                      name
+                      shortDescription
+                      img {
+                        alt
+                        gatsbyImageData
+                      }
+                    }
+                  }
+                }
+            }
         }
     `)
-
     return (
         <>
-            <header></header>
+            <Header data={datoCmsHeader}/>
             {children}
             <Footer data={datoCmsFooter} />
         </>
