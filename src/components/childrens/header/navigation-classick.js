@@ -2,9 +2,9 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-export default function NavigationItemClassick ({ data }) {
-    return(
-        <StyledLink activeClassName="active" to={'/' + data.slug}>
+export default function NavigationItemClassick({ data, changeIsOpened }) {
+    return (
+        <StyledLink onClick={() => { changeIsOpened(false) }} activeClassName="active" to={'/' + data.slug}>
             {data.name}
         </StyledLink>
     )

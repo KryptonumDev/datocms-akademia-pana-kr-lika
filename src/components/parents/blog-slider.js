@@ -73,14 +73,22 @@ const SLink = styled(OutlinedLink)`
 const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 40px;
+    grid-gap: 40px;
     margin-top: clamp(60px, 14.4vw, 100px);
+
+    @media (max-width: 760px) {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: clamp(50px, 7.6vw, 100px) auto;
+        
+    }
 `
 
 const GridItem = styled.div`
     border: 1px solid #F3F5F8;
     box-sizing: border-box;
-    border-radius: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
     height: 100%;
     position: relative;
     display: flex;
@@ -125,6 +133,18 @@ const GridItem = styled.div`
             line-height: 150%;
             color: #394C71;
 
+        }
+    }
+
+    @media (max-width: 500px) {
+        h3{
+            padding: 16px 16px 8px 16px;
+        }
+        p{
+            padding: 0 16px;
+        }
+        .flex{
+            padding: 48px 16px 16px 16px;
         }
     }
 `

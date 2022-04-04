@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import Hero from "../components/parents/hero-main-page";
 import TwoColumnRepeater from "../components/parents/two-column-repeater";
 import Testomontials from "../components/parents/testomontials";
-import Blog from "../components/parents/blog";
+import Blog from "../components/parents/blog-slider";
 
 export default function Index({ data: { datoCmsHomepage, posts } }) {
   return (

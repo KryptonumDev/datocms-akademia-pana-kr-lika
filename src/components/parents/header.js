@@ -1,3 +1,4 @@
+import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
 import styled from 'styled-components'
@@ -12,12 +13,14 @@ export default function Header({ data: { logo, menu } }) {
             <LocContainer>
                 <Flex>
                     <ImageWrapper>
-                        <Image image={logo.gatsbyImageData} />
+                        <Link to='/'>
+                            <Image image={logo.gatsbyImageData} />
+                        </Link>
                         <MobileOpen onClick={() => { changeIsOpened(!isOpened) }}></MobileOpen>
                     </ImageWrapper>
                     <Nav isOpened={isOpened}>
                         <ul>
-                            <Navigation menu={menu} />
+                            <Navigation changeIsOpened={changeIsOpened} menu={menu} />
                         </ul>
                     </Nav>
                 </Flex>

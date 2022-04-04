@@ -5,9 +5,14 @@ import styled from "styled-components"
 import OpenArrow from './../../../resources/faq.svg'
 import { Arrow } from "../../../resources/svg"
 
-export default function NavigationItemMega({ data: { slug, title, menuItem } }) {
+export default function NavigationItemMega({ changeIsOpenedOuter, data: { slug, title, menuItem } }) {
 
     const [isOpened, changeIsOpened] = useState(false)
+
+    const Close = () => {
+        changeIsOpened(false)
+        changeIsOpenedOuter(false)
+    }
 
     return (
         <React.Fragment>
@@ -18,7 +23,7 @@ export default function NavigationItemMega({ data: { slug, title, menuItem } }) 
             <MegaMeni isOpened={isOpened}>
                 <ul className="ul">
                     {menuItem.map(el => (
-                        <Link onClick={() => { changeIsOpened(!isOpened) }} to={'/warsztaty/' + el.slug}>
+                        <Link onClick={() => { Close() }} to={'/warsztaty/' + el.slug}>
                             <li >
                                 <GatsbyImage className="img" image={el.img.gatsbyImageData} />
                                 <p className="title">{el.name}</p>
@@ -27,7 +32,7 @@ export default function NavigationItemMega({ data: { slug, title, menuItem } }) 
                         </Link>
                     ))}
                 </ul>
-                <Link onClick={() => { changeIsOpened(!isOpened) }} className="offerLink" to={'/' + slug}>Zobacz pełną ofertę <Arrow /></Link>
+                <Link onClick={() => { Close() }} className="offerLink" to={'/' + slug}>Zobacz pełną ofertę <Arrow /></Link>
             </MegaMeni>
         </React.Fragment>
     )
@@ -98,6 +103,7 @@ const MegaMeni = styled.div`
     box-shadow: 0px 12px 40px rgba(16, 24, 64, 0.24);
     border-radius: 25px;
     padding: 24px;
+
     .ul{
         display: grid;
         gap: 24px;
