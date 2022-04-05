@@ -1,10 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Content from "../../components/parents/post-content";
+import Blog from "../../components/parents/blog-slider";
 
-export default function Post({ data: { post, morePosts: { nodes: morePosts } } }) {
-  debugger
+export default function Post({ data: { post, morePosts } }) {
   return (
-    <></>
+    <main>
+      <Content data={post} />
+      <Blog data={post.otherPosts[0]} posts={morePosts} />
+    </main>
   );
 }
 
@@ -16,6 +20,7 @@ export const query = graphql`
       }
       title
       slug
+      shortText
       category {
         slug
         name
@@ -27,6 +32,11 @@ export const query = graphql`
       date
       coverImage {
         gatsbyImageData(width: 1500)
+      }
+      otherPosts {
+        title
+        linkUrl
+        linkText
       }
     }
     morePosts: allDatoCmsPost(

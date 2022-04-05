@@ -38,14 +38,24 @@ const StyledLink = styled(Link)`
         color: rgba(18, 17, 39, 0.32);
     }
 
+    &.active{
+        color: #DB2777; 
+    }
+
     :last-child{
+        padding: 13.5px 31px;
         background-color: #55B83B;
         color: #fff;
         margin: 0 0 0 31px;
-    }
 
-    &.active{
-        color: #DB2777; 
+        &:hover{
+            background-color: rgb(57, 143, 35);
+        }
+
+        &.active{
+            color: #fff; 
+            background-color: rgb(57, 143, 35);
+        }
     }
 
     @media (max-width: 1100px) {

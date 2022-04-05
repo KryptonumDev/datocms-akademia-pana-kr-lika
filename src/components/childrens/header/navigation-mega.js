@@ -50,12 +50,16 @@ const StyledLink = styled.button`
     border: 1px solid transparent;
 
     &:hover{
-        background-color: rgba(18, 17, 39, 0.04);
+        @media (min-width: 1101px){
+            background-color: rgba(18, 17, 39, 0.04);
+        }
     }
 
     &:focus{
-        background-color: rgba(18, 17, 39, 0.04);
-        border-color: rgba(18, 17, 39, 0.04);
+        @media (min-width: 1101px){
+            background-color: rgba(18, 17, 39, 0.04);
+            border-color: rgba(18, 17, 39, 0.04);
+        }
     }
 
     &:disabled{

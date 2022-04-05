@@ -1,30 +1,34 @@
+import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import { StructuredText } from "react-datocms"
 import styled from "styled-components"
-import { PolitykaLeft, PolitykaRight } from "../../resources/svg"
+import { PostLeft, PostRight } from "../../resources/svg"
 import { Container } from "../../styles/styles"
 import Quote from './../../resources/quotes.svg'
 
-export default function PolitykaContent({ data: { title, content } }) {
+export default function Content({ data: { category, content, shortText, title, slug, date, coverImage } }) {
     return (
         <Wrapper>
-            <LocContainer>
+            <Container>
+                <Category>{category.name}</Category>
                 <Title>{title}</Title>
-                <Content>
-                    <PolitykaLeft />
-                    <PolitykaRight />
+                <SubTitle>{shortText}</SubTitle>
+                <ImageWrapper>
+                    <PostLeft />
+                    <PostRight />
+                    <Image image={coverImage.gatsbyImageData} />
+                </ImageWrapper>
+                <ContentBox>
                     <StructuredText data={content} />
-                </Content>
-            </LocContainer>
+                </ContentBox>
+            </Container>
         </Wrapper>
     )
 }
 
-
-const Wrapper = styled.div`
-    padding-top: clamp(160px, 20vw, 240px); 
-    padding-bottom: clamp(100px, 15px, 180px);  
+const Wrapper = styled.section`
     position: relative;
+    padding-top: clamp(140px, 15vw, 180px);
     overflow: hidden;
 
     &::before{
@@ -39,54 +43,96 @@ const Wrapper = styled.div`
     }
 `
 
-const LocContainer = styled(Container)`
-    overflow: unset;
+const Category = styled.span`
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 170%;
+    text-align: center;
+    color: #203662;
+    padding: 14.5px 34px;
+    background: #FFFFFF;
+    border-radius: 100px;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
 `
-
 
 const Title = styled.h1`
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 16px;
-    text-align: center;
     font-weight: 700;
-    font-size: clamp(48px, 6vw, 64px);
+    font-size: 64px;
     line-height: 100%;
+    text-align: center;
     letter-spacing: -2px;
     color: #203662;
-
-    @media (max-width: 500px) {
-        letter-spacing: -1.5px;
-    }
+    margin: 32px;
 `
 
-const Content = styled.div`
-    padding: 45px 28px;
-    background: #FFFFFF;
-    border: 1px solid #F3F5F8;
-    box-sizing: border-box;
-    box-shadow: 0px 20px 50px rgba(32, 31, 55, 0.08);
-    border-radius: 25px;
-    max-width: 1020px;
-    margin: clamp(60px, 10vw, 120px) auto 0 auto;
+const SubTitle = styled.p`
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: center;
+    color: #394C71;
+    margin-bottom: 80px;
+`
+
+const ImageWrapper = styled.div`
     position: relative;
+    margin-bottom: 140px;
 
     .left{
         position: absolute;
         z-index: -1;
-        left: -90px;
-        top: -90px;
-        transform-origin: 0 0;
+        transform-origin: 100% 0;
+        left: -87px;
+        bottom: -73px;
     }
 
     .right{
         position: absolute;
         z-index: -1;
-        transform-origin: 100% 0;
-        top: -260px;
-        right: -80px;
-
+        top: -90px;
+        right: -100px;
+        transform-origin: 0 100%;
     }
+
+    @media (max-width: 760px) {
+        .left{
+            transform: scale(.75);
+            left: -115px;
+            bottom: -107px;
+        }
+
+        .right{
+            transform: scale(.75);
+            top: -152px;
+            right: -162px;
+
+        }
+    }
+
+@media (max-width: 500px) {
+    .left{
+        transform: scale(.33);
+        left: -183px;
+        bottom: -168px;
+    }
+
+    .right{
+        transform: scale(.33);
+        right: -256px;
+        top: -260px;
+    }
+}
+`
+
+const Image = styled(GatsbyImage)`
+    border-radius: 25px;
+`
+
+const ContentBox = styled.div`
+    max-width: 740px;
+    margin: 0 auto;
 
     h1, h2{
         font-weight: 700;
@@ -149,6 +195,11 @@ const Content = styled.div`
         }
     }
 
+    img{
+        width: 100%;
+        border-radius: 25px;
+    }
+
     ul{
         margin: 26px 0;
         display: grid;
@@ -168,15 +219,4 @@ const Content = styled.div`
             }
         }
     }
-
-    @media (max-width: 600px) {
-        .left{
-            
-            left: -379px;
-            top: -286px;
-        }
-        .right{
-            display: none;
-        }
-    }
-` 
+`

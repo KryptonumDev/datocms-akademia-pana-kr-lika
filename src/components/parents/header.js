@@ -16,7 +16,9 @@ export default function Header({ data: { logo, menu } }) {
                         <Link to='/'>
                             <Image image={logo.gatsbyImageData} />
                         </Link>
-                        <MobileOpen onClick={() => { changeIsOpened(!isOpened) }}></MobileOpen>
+                        <MobileOpen isOpened={isOpened} onClick={() => { changeIsOpened(!isOpened) }}>
+                            <span></span>
+                        </MobileOpen>
                     </ImageWrapper>
                     <Nav isOpened={isOpened}>
                         <ul>
@@ -58,6 +60,55 @@ const MobileOpen = styled.button`
     height: 36px;
     background: #55B83B;
     border-radius: 50px;
+    position: relative;
+
+    &::after{
+        content: '';
+        width: 14px;
+        height: 2px;
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity:  ${props => props.isOpened ? '0' : '1'};
+        transition: opacity .3 cubic-bezier(0.215, 0.610, 0.355, 1);
+    }
+
+    span{
+        width: 14px;
+        height: 2px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+
+        &::after{
+            content: '';
+            width: 14px;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transition: transform .3s cubic-bezier(0.215, 0.610, 0.355, 1);
+            transform: ${props => props.isOpened ? 'translate(-50%, -50%) rotateZ(45deg)' : 'translate(-50%, calc(-50% - 4px))'};
+            border-radius: 50px;
+            
+        }
+
+        &::before{
+            content: '';
+            width: 14px;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transition: transform .3s cubic-bezier(0.215, 0.610, 0.355, 1);
+            transform: ${props => props.isOpened ? 'translate(-50%, -50%) rotateZ(-45deg)' : 'translate(-50%, calc(-50% + 4px))'};
+            border-radius: 50px;
+        }   
+    }
 `
 
 
