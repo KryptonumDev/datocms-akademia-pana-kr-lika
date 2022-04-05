@@ -1,20 +1,25 @@
-import React from "react"
+import React, { useEffect } from 'react'
+import { startTransition } from '../functions/page-transtion'
 import { graphql } from "gatsby"
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { Helmet } from 'react-helmet'
 import PolitykaContent from "../components/parents/polityka-content"
 
 export default function Polityka({ data: { site, datoCmsPrivacyPolicePage } }) {
-    return (
-        <main>
-            <HelmetDatoCms
-                seo={datoCmsPrivacyPolicePage.seo}
-                favicon={site.favicon}
-            />
-            <Helmet htmlAttributes={{ lang: 'pl' }} />
-            <PolitykaContent data={datoCmsPrivacyPolicePage} />
-        </main>
-    )
+
+  useEffect(() => {
+    startTransition()
+  }, [])
+  return (
+    <main id='main'>
+      <HelmetDatoCms
+        seo={datoCmsPrivacyPolicePage.seo}
+        favicon={site.favicon}
+      />
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
+      <PolitykaContent data={datoCmsPrivacyPolicePage} />
+    </main>
+  )
 }
 
 

@@ -82,9 +82,12 @@ const Wrapper = styled.section`
 `
 
 const LocContainer = styled(Container)`
-    overflow: hidden !important;
     padding:  0 0 160px 0;
     margin-bottom: -160px;
+
+    @media (max-width: 1390px) {
+        overflow: hidden !important;  
+    }
 `
 
 const Title = styled.h1`

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from 'react'
+import { startTransition } from '../functions/page-transtion'
 import { graphql } from "gatsby";
 import Hero from "../components/parents/hero-main-page";
 import TwoColumnRepeater from "../components/parents/two-column-repeater";
@@ -8,8 +9,11 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { Helmet } from 'react-helmet'
 
 export default function Index({ data: { site, datoCmsHomepage, posts } }) {
+  useEffect(() => {
+    startTransition()
+  }, [])
   return (
-    <main>
+    <main id='main'>
       <HelmetDatoCms
         seo={datoCmsHomepage.seo}
         favicon={site.favicon}

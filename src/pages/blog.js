@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from 'react'
+import { startTransition } from '../functions/page-transtion'
 import { graphql } from "gatsby"
 import Hero from "../components/parents/hero-blog-page"
 import BlogPosts from "../components/parents/blog-posts"
@@ -6,8 +7,11 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { Helmet } from 'react-helmet'
 
 export default function Blog({ data: { site, datoCmsBlog, allDatoCmsPost, allDatoCmsBlogCategory } }) {
+    useEffect(() => {
+        startTransition()
+    }, [])
     return (
-        <main>
+        <main id='main'>
             <HelmetDatoCms
                 seo={datoCmsBlog.seo}
                 favicon={site.favicon}
