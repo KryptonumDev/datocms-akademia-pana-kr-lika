@@ -1,6 +1,7 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
+import { HeroMainPageLeft, HeroMainPageRight } from '../../resources/svg'
 import { Container, StyledLink } from '../../styles/styles'
 
 export default function Hero({ data: { title, linkText, linkSlug, img } }) {
@@ -9,7 +10,11 @@ export default function Hero({ data: { title, linkText, linkSlug, img } }) {
             <LocContainer>
                 <Title>{title}</Title>
                 <LocLink to={linkSlug}>{linkText}</LocLink>
-                <Image image={img.gatsbyImageData} alt={img.alt} />
+                <ImageContainer>
+                    <HeroMainPageLeft />
+                    <HeroMainPageRight />
+                    <Image image={img.gatsbyImageData} alt={img.alt} />
+                </ImageContainer>
             </LocContainer>
         </Wrapper>
     )
@@ -18,6 +23,7 @@ export default function Hero({ data: { title, linkText, linkSlug, img } }) {
 const Wrapper = styled.section`
     padding-top: clamp(160px, 20vw, 240px); 
     position: relative;
+    overflow: hidden;
 
     &::before{
         content: '';
@@ -33,6 +39,10 @@ const Wrapper = styled.section`
 
 const LocContainer = styled(Container)`
     max-width: 984px;
+
+    @media(max-width: 1170px){
+        
+    }
 `
 
 const Title = styled.h1`
@@ -60,5 +70,52 @@ const LocLink = styled(StyledLink)`
 
 const Image = styled(GatsbyImage)`
     border-radius: clamp(25px, 6vw, 50px);
+`
+
+const ImageContainer = styled.div`
+    position: relative;
+
+    .left{
+        position: absolute;
+        top: -73px;
+        left: -168px;
+        transform-origin: 0 0;
+    }
+
+    .right{
+        position: absolute;
+        transform-origin: 100% 0;
+        top: -190px;
+        right: -120px;
+    }
+
+    @media (max-width: 760px) {
+        .left{
+            transform: scale(.75);
+            top: -40px;
+            left: -60px;
+        }
+
+        .right{
+            transform: scale(.75);
+            top: -58px;
+            right: -45px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .left{
+            transform: scale(.30);
+            top: -18px;
+            left: -16px;
+        }
+
+        .right{
+            transform: scale(.33);
+            top: -26px;
+            right: -16px;
+        }
+        
+    }
 `
 

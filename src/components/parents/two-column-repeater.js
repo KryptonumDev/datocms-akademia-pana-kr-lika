@@ -116,6 +116,7 @@ const Item = styled.div`
     @media(max-width: 876px){
         .imgPart{
         margin: 0;
+        margin-right: 0!important;
         }
 
         :nth-child(2n){
