@@ -10,8 +10,8 @@ export default function Track({ children, handlers, breakPoints, position, items
         <Slider currBreakPoint={currBreakPoint} breakPoints={breakPoints} itemsCount={itemsCount}>
             <div {...handlers}>
                 <div className='slider'>
-                    {childrens.map(el => (
-                        <SliderItem data={{ position: position, gap: currBreakPoint.gap }}>
+                    {childrens.map((el, index) => (
+                        <SliderItem key={index} data={{ position: position, gap: currBreakPoint.gap }}>
                             {el.props.children}
                         </SliderItem>
                     ))}

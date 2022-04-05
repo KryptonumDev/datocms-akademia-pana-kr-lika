@@ -29,6 +29,7 @@ export default function Kontakt({ data: { title, text } }) {
 const Wrapper = styled.section`
     padding: clamp(180px, 18vw, 260px) 0 clamp(120px, 8.33vw, 160px) 0;
     background-color: #FFFBED;
+    overflow: hidden;
 
     @media (max-width: 640px){
         padding: 180px 0 120px 0;

@@ -15,7 +15,7 @@ export default function Blog({ data: { title, linkText, linkUrl }, posts: { node
                 </Flex>
                 <Grid>
                     {posts.map(el => (
-                        <Link to={'/blog/' + el.slug}>
+                        <Link key={el.slug} to={'/blog/' + el.slug}>
                             <GridItem>
                                 <div>
                                     <Image image={el.coverImage.small} />

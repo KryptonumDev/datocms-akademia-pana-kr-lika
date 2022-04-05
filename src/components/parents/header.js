@@ -1,35 +1,81 @@
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Navigation from '../childrens/header'
 import { Container } from './../../styles/styles'
 
 export default function Header({ data: { logo, menu } }) {
 
+    const eventListener = () => {
+        if (window.scrollY > 0 && !isBackground) {
+            changeIsBackground(true)
+        } else {
+            changeIsBackground(false)
+        }
+    }
+
     const [isOpened, changeIsOpened] = useState(false)
+    const [isBackground, changeIsBackground] = useState(false)
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            document.addEventListener('scroll', eventListener)
+        }
+    }, [])
+
     return (
-        <Wrapper>
+        <Wrapper isBackground={isBackground} isOpened={isOpened}>
             <LocContainer>
                 <Flex>
                     <ImageWrapper>
-                        <Link to='/'>
+                        <Link aria-label='link do strony głównej' to='/'>
                             <Image image={logo.gatsbyImageData} />
                         </Link>
-                        <MobileOpen isOpened={isOpened} onClick={() => { changeIsOpened(!isOpened) }}>
+                        <MobileOpen id='mobileOpen' aria-label="otwórzyć lub zamknąć meni mobilne" isOpened={isOpened} onClick={() => { changeIsOpened(!isOpened) }}>
                             <span></span>
                         </MobileOpen>
                     </ImageWrapper>
                     <Nav isOpened={isOpened}>
-                        <ul>
+                        <div>
                             <Navigation changeIsOpened={changeIsOpened} menu={menu} />
-                        </ul>
+                        </div>
                     </Nav>
                 </Flex>
             </LocContainer>
         </Wrapper>
     )
 }
+
+const ImageWrapper = styled.div`
+    max-height: 53px;
+
+    @media(max-width: 1100px){
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 28.5px;
+        max-height: 110px;
+        
+        position: fixed;
+        z-index: 100;
+        top: 0;
+    }
+
+    @media(max-width: 500px){
+        padding: 28.5px 16px;
+
+    }
+`
+
+const Image = styled(GatsbyImage)`
+    max-width: 283px;
+
+    @media (max-width: 500px) {
+        max-width: 230px;
+    }
+`
 
 const Wrapper = styled.header`
     height: 53px;
@@ -40,14 +86,60 @@ const Wrapper = styled.header`
     left: 0;
     right: 0;
     z-index: 10;
-    box-shadow: 0px 20px 50px rgba(32, 31, 55, 0.08);
-    background: #fff;
+
+    @media (min-width: 1101px) {
+
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            transition: opacity .6s cubic-bezier(0.215, 0.610, 0.355, 1);
+            opacity: ${props => props.isBackground ? '1' : '0'};
+            box-shadow: 0px 20px 50px rgba(32, 31, 55, 0.08);
+            background: #fff;
+            z-index: -1;
+        }
+        
+    }
 
     @media(max-width: 1100px){
         height: auto;
         overflow: scroll;
         position: static;
         padding: 0;
+
+        ${ImageWrapper}{
+            &::after{
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                transition: opacity .6s cubic-bezier(0.215, 0.610, 0.355, 1);
+                opacity: ${props => props.isOpened || props.isBackground ? '1' : '0'};
+                box-shadow: 0px 20px 50px rgba(32, 31, 55, 0.08);
+                background: #fff;
+                z-index: -1;
+            }
+
+        }
+
+        
+
+        &.active{
+            ${ImageWrapper}{
+                &::after{
+                    opacity: 1;
+
+                }
+
+            }
+
+        }
     }
 `
 
@@ -128,49 +220,11 @@ const Flex = styled.div`
     }
 `
 
-const ImageWrapper = styled.div`
-    max-height: 53px;
-
-    @media(max-width: 1100px){
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        background-color: #fff;
-        padding: 28.5px;
-        max-height: 110px;
-        
-        position: fixed;
-        z-index: 100;
-        top: 0;
-    }
-
-    @media(max-width: 500px){
-        padding: 28.5px 16px;
-
-    }
-`
-
-const Image = styled(GatsbyImage)`
-    max-width: 283px;
-
-    @media (max-width: 500px) {
-        max-width: 230px;
-    }
-`
-
 const Nav = styled.nav`
-    ul{
+    div{
         display: grid;
         grid-template-columns: repeat(5, auto);
         grid-column-gap: 8px;
-
-        li{
-
-            a{
-                
-            }
-        }
     }
 
      @media(max-width: 1100px){
@@ -186,7 +240,7 @@ const Nav = styled.nav`
         bottom: 0;
         z-index: 100;
 
-        ul{
+        div{
             overflow: auto;
             padding:  0 28.5px  28.5px  28.5px;
             max-height: 100%;

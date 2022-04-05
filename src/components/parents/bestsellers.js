@@ -11,7 +11,7 @@ export default function Bestsellers({ data: { title }, warsztaty }) {
                 <Title>{title}</Title>
                 <Grid>
                     {warsztaty.map(({ node: el }) => (
-                        <Link to={'/warsztaty/' + el.slug}>
+                        <Link key={el.slug} to={'/warsztaty/' + el.slug}>
                             <GridItem>
                                 <Image image={el.previewImg.gatsbyImageData} />
                                 <h3>{el.nazwaWarsztatu}</h3>

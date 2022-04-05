@@ -1,13 +1,14 @@
 import React from 'react'
 import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
-import { AboutHeroBackground, AboutHeroRightTop, AboutHeroRightBottom, AboutHeroLeft } from '../../resources/svg'
+import { AboutHeroBackgroundLeft, AboutHeroBackgroundRight, AboutHeroRightTop, AboutHeroRightBottom, AboutHeroLeft } from '../../resources/svg'
 import { Container } from '../../styles/styles'
 
 export default function Hero({ data: { title, subTitle, subText } }) {
     return (
         <Wrapper>
-            <AboutHeroBackground />
+            <AboutHeroBackgroundLeft />
+            <AboutHeroBackgroundRight />
             <LocContainer>
                 <Title>{title}</Title>
                 <Content>
@@ -27,8 +28,30 @@ const Wrapper = styled.section`
     max-width: 1440px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 160px;
-    margin-bottom: -160px;
+
+    &::before{
+        content: '';
+        background-color: #FDF2F8;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        height: 600px;
+    }
+
+    .hero-left{
+        position: absolute;
+        left: -40px;
+        top: 125px;
+    }
+
+    .hero-right{
+        position: absolute;
+        right: 36px;
+        top: 160px;
+    }
     
     .hero-background{
         position: absolute;
@@ -38,49 +61,30 @@ const Wrapper = styled.section`
         transform: translateX(-50%);
     }
 
-    &::after{
-        content: '';
-        background: #FDF2F8;
-        position: absolute;
-        height: 493px;
-        width: calc(50vw - 719px);
-        right: 1px;
-        top: 0;
-        transform:translateX(100%);
-    }
-
-    &::before{
-        content: '';
-        background: #FDF2F8;
-        position: absolute;
-        height: 721.5px;
-        width: calc(50vw - 719px);
-        left: 1px;
-        top: 0;
-        transform:translateX(-100%);
-    }
-
-    @media (max-width: 1440px) {
-    overflow-x: hidden;
-        .hero-background{
-            left: 0;
-            transform: unset;
+    @media (max-width: 1240px) {
+        .hero-right{
+            display: none;
         }
     }
 
-    @media(max-width: 764px){
-        .hero-background{
-            left: -160px;
-        }
+@media (max-width: 1024px) {
+    .hero-left{
+        left: -150px;
+        top: 205px;
     }
+}
+
+@media(max-width: 760px){
+    .hero-left{
+        top: 133px;
+    }
+}
 `
 
 const LocContainer = styled(Container)`
-    overflow: visible !important;
-
-    @media(max-width: 764px){
-        padding: 0;
-    }
+    overflow: hidden !important;
+    padding:  0 0 160px 0;
+    margin-bottom: -160px;
 `
 
 const Title = styled.h1`

@@ -9,7 +9,7 @@ export default function Dots({ itemsCount, positionSet, position }) {
     return (
         <DotsWrapper itemsCount={itemsCount} position={position}>
             {items.map(el => (
-                <Button disabled={position === el.id} position={position} key={el.id} onClick={() => { positionSet(el.id) }} />
+                <Button aria-label={'otwórzyć ' + (el.id + 1) + ' element slidera'} disabled={position === el.id} position={position} key={el.id} onClick={() => { positionSet(el.id) }} />
             ))}
         </DotsWrapper>
     )

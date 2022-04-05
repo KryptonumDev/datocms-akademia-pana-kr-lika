@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 export default function NavigationItemClassick({ data, changeIsOpened }) {
     return (
-        <StyledLink onClick={() => { changeIsOpened(false) }} activeClassName="active" to={'/' + data.slug}>
+        <StyledLink key={data.name} onClick={() => { changeIsOpened(false) }} activeClassName="active" to={'/' + data.slug}>
             {data.name}
         </StyledLink>
     )

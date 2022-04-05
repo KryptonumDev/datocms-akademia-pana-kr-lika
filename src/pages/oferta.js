@@ -4,10 +4,16 @@ import TwoColumnRepeater from '../components/parents/two-column-repeater'
 import Kontakt from "../components/parents/kontakt-form-outside";
 import Hero from "../components/parents/hero-offer-page";
 import Bestsellers from "../components/parents/bestsellers";
+import { HelmetDatoCms } from 'gatsby-source-datocms'
+import { Helmet } from 'react-helmet'
 
-export default function Oferta({ data: { datoCmsOfertaPage, allDatoCmsWarsztat: { edges: warsztaty } } }) {
+export default function Oferta({ data: { site, datoCmsOfertaPage, allDatoCmsWarsztat: { edges: warsztaty } } }) {
   return (
     <main>
+      <HelmetDatoCms
+        seo={datoCmsOfertaPage.seo}
+        favicon={site.favicon}
+      />
       <Hero data={datoCmsOfertaPage.hero[0]} />
       <TwoColumnRepeater repeaterType='solo' data={datoCmsOfertaPage.repeater[0]} />
       <Bestsellers warsztaty={warsztaty} data={datoCmsOfertaPage.bestsellers[0]} />
@@ -18,7 +24,15 @@ export default function Oferta({ data: { datoCmsOfertaPage, allDatoCmsWarsztat: 
 
 export const query = graphql`
 query OfertaQuery {
+  site: datoCmsSite {
+    favicon: faviconMetaTags {
+      ...GatsbyDatoCmsFaviconMetaTags
+    }
+  }
     datoCmsOfertaPage {
+      seo: seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
       hero {
         title
         subTitle

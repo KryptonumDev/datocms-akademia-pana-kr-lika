@@ -105,7 +105,7 @@ const LogoText = styled.p`
     font-weight: 500;
     font-size: 16px;
     line-height: 170%;
-    color: #727E95;
+    color: #394C71;
     position: relative;
 
     @media (max-width: 1024px){
@@ -205,7 +205,7 @@ const Authors = styled.div`
     p{
         font-size: 16px;
         line-height: 170%;
-        color: #727E95;
+        color: #394C71;
 
         strong{
             font-weight: 500;

@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     margin-top: 50px;
 `
 
-const Title = styled.h3`
+const Title = styled.h2`
     font-weight: 700;
     font-size: clamp(32px, 6.4vw, 48px);
     line-height: 100%; 

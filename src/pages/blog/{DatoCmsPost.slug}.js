@@ -2,10 +2,17 @@ import React from "react"
 import { graphql } from "gatsby"
 import Content from "../../components/parents/post-content";
 import Blog from "../../components/parents/blog-slider";
+import { HelmetDatoCms } from 'gatsby-source-datocms'
+import { Helmet } from 'react-helmet'
 
-export default function Post({ data: { post, morePosts } }) {
+export default function Post({ data: { site, post, morePosts } }) {
   return (
     <main>
+      <HelmetDatoCms
+        seo={post.seo}
+        favicon={site.favicon}
+      />
+      <Helmet htmlAttributes={{ lang: 'pl' }} />
       <Content data={post} />
       <Blog data={post.otherPosts[0]} posts={morePosts} />
     </main>
@@ -14,6 +21,11 @@ export default function Post({ data: { post, morePosts } }) {
 
 export const query = graphql`
   query PostBySlug($id: String) {
+    site: datoCmsSite {
+      favicon: faviconMetaTags {
+        ...GatsbyDatoCmsFaviconMetaTags
+      }
+    }
     post: datoCmsPost(id: { eq: $id }) {
       seo: seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags

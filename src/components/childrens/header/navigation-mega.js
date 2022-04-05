@@ -15,24 +15,24 @@ export default function NavigationItemMega({ changeIsOpenedOuter, data: { slug, 
     }
 
     return (
-        <React.Fragment>
+        <React.Fragment key={title}>
             <StyledLink onClick={() => { changeIsOpened(!isOpened) }}>
-                {title}<img src={OpenArrow} />
+                {title}<img alt="strzałeczka dekoracyjna" src={OpenArrow} />
             </StyledLink>
             <CloseOut isOpened={isOpened} onClick={() => { changeIsOpened(!isOpened) }} />
             <MegaMeni isOpened={isOpened}>
                 <ul className="ul">
                     {menuItem.map(el => (
-                        <Link onClick={() => { Close() }} to={'/warsztaty/' + el.slug}>
-                            <li >
+                        <li key={el.name}>
+                            <Link tabIndex={isOpened ? '0' : '-1'} onClick={() => { Close() }} to={'/warsztaty/' + el.slug}>
                                 <GatsbyImage className="img" image={el.img.gatsbyImageData} />
                                 <p className="title">{el.name}</p>
                                 <p className="text">{el.shortDescription}</p>
-                            </li>
-                        </Link>
+                            </Link>
+                        </li>
                     ))}
                 </ul>
-                <Link onClick={() => { Close() }} className="offerLink" to={'/' + slug}>Zobacz pełną ofertę <Arrow /></Link>
+                <Link tabIndex={isOpened ? '0' : '-1'} onClick={() => { Close() }} className="offerLink" to={'/' + slug}>Zobacz pełną ofertę <Arrow /></Link>
             </MegaMeni>
         </React.Fragment>
     )
@@ -104,9 +104,12 @@ const MegaMeni = styled.div`
     max-width: 1165px;
     width: 90vw;
     background: #FFFFFF;
+    border: unset;
     box-shadow: 0px 12px 40px rgba(16, 24, 64, 0.24);
     border-radius: 25px;
     padding: 24px;
+    display: block !important;
+    overflow: hidden !important;
 
     .ul{
         display: grid;
@@ -159,7 +162,9 @@ const MegaMeni = styled.div`
 
     @media(max-width: 1100px){
         margin-bottom: 32px;
-        padding: 0;
+        padding: 0 !important;
+        width: 99% !important;
+        overflow: hidden;
         position: unset;
         left: unset;
         box-shadow: unset;

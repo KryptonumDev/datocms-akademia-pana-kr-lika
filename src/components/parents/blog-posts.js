@@ -34,7 +34,7 @@ export default function BlogPosts({ data: { categories, posts, content: { title 
                     <Categories>
                         <Button className="buttonFilter" id='all' onClick={() => { changeFilter('all') }} as='button'>Wszystkie wpisy</Button>
                         {categories.map(el => (
-                            <Button className="buttonFilter" id={el.slug} onClick={() => { changeFilter(el.slug) }} as='button'>{el.name}</Button>
+                            <Button key={el.name} className="buttonFilter" id={el.slug} onClick={() => { changeFilter(el.slug) }} as='button'>{el.name}</Button>
                         ))}
                     </Categories>
                 </Flex>
@@ -53,7 +53,7 @@ export default function BlogPosts({ data: { categories, posts, content: { title 
                                                     layout>
                                                     <div className='category'>{el.category.name}</div>
                                                     <div>
-                                                        <Image image={el.coverImage.gatsbyImageData} />
+                                                        <Image image={el.coverImage.gatsbyImageData} alt={el.coverImage.alt} />
                                                         <h3>{el.title}</h3>
                                                         <p>{el.shortText}</p>
                                                     </div>

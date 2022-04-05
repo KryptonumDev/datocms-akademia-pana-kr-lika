@@ -13,7 +13,7 @@ export default function TwoColumnRepeater({ repeaterType, data: { title, repeate
                 }
                 <div>
                     {repeater.map(el => (
-                        <Item repeaterType={repeaterType} key={el.text}>
+                        <Item key={el.title} repeaterType={repeaterType}>
                             <ImagePart imgType={el.imgType} mainImg={el.img} additionalImg={el.additionalImage} />
                             <TextPart repeaterType={repeaterType} linkText={el.linkText} linkUrl={el.linkUrl} text={el.textParagraph} title={el.title} />
                         </Item>
@@ -28,8 +28,6 @@ const Wrapper = styled.section`
     overflow: hidden;
     padding-bottom: 100px;
     margin-bottom: -100px;
-    padding-top: 100px;
-    margin-top: -100px;
 `
 
 const Title = styled.h2`
