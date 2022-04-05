@@ -1,7 +1,6 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { HeroMainPageLeft, HeroMainPageRight } from '../../resources/svg'
 import { Container, StyledLink } from '../../styles/styles'
 
 export default function Hero({ data: { title, linkText, linkSlug, img } }) {
@@ -11,8 +10,6 @@ export default function Hero({ data: { title, linkText, linkSlug, img } }) {
                 <Title>{title}</Title>
                 <LocLink to={linkSlug}>{linkText}</LocLink>
                 <ImageContainer>
-                    <HeroMainPageLeft />
-                    <HeroMainPageRight />
                     <Image image={img.gatsbyImageData} alt={img.alt} />
                 </ImageContainer>
             </LocContainer>

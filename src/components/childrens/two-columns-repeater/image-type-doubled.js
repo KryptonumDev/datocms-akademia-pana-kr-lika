@@ -1,7 +1,7 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { TypeDoubledLeft, TypeDoubledRight } from '../../../resources/svg'
+import { TypeDoubledLeft, TypeDoubledRight } from '../../../resources/type-doubled'
 
 export default function ImageTypeThree({ mainImage, additionalImage }) {
     return (

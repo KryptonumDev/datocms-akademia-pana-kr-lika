@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { OfferSteps, OfferHeroLeft, OfferHeroLeftBottom, OfferHeroRight } from '../../resources/svg'
+import { OfferSteps, OfferHeroLeft, OfferHeroLeftBottom, OfferHeroRight } from '../../resources/offer'
 import { Container } from '../../styles/styles'
 
 export default function Hero({ data: { title, subTitle, steps } }) {

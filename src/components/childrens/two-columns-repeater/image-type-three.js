@@ -1,7 +1,7 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { TypeThreeLeft, TypeThreeRight } from '../../../resources/svg'
+import { TypeThreeLeft, TypeThreeRight } from '../../../resources/type-three'
 
 export default function ImageTypeThree({ mainImage }) {
     return (

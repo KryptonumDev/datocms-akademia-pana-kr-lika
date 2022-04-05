@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { KontaktLeft, KontaktRight } from '../../resources/svg'
+import { KontaktLeft, KontaktRight } from '../../resources/kontakt'
 import { Container } from '../../styles/styles'
 import KontaktForm from '../childrens/kontakt'
 

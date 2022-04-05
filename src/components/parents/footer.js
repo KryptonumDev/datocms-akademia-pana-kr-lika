@@ -3,7 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
-import { Facebook, FooterLeft, FooterRight, Instagram, Twitter } from '../../resources/svg'
+import { Facebook, FooterLeft, FooterRight, Instagram, Twitter } from '../../resources/footer'
 import { Container } from '../../styles/styles'
 import { SOCIAL_ICONS } from './../../constants/types'
 

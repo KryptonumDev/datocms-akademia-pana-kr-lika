@@ -1,7 +1,7 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { ImageGridBottom, ImageGridLeft, ImageGridRight } from '../../resources/svg'
+import { ImageGridBottom, ImageGridLeft, ImageGridRight } from '../../resources/image-grid'
 import { Container } from '../../styles/styles'
 
 export default function ImageGrid({ data: { images, title } }) {

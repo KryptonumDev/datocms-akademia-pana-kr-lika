@@ -1,7 +1,6 @@
-import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { KontaktImage, KontaktLeft, KontaktRight } from '../../resources/svg'
+import { KontaktImage, KontaktLeft, KontaktRight } from '../../resources/kontakt'
 import { Container } from '../../styles/styles'
 import KontaktForm from '../childrens/kontakt'
 

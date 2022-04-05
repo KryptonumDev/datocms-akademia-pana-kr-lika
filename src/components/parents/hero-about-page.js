@@ -1,7 +1,7 @@
 import React from 'react'
 import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
-import { AboutHeroBackgroundLeft, AboutHeroBackgroundRight, AboutHeroRightTop, AboutHeroRightBottom, AboutHeroLeft } from '../../resources/svg'
+import { AboutHeroBackgroundLeft, AboutHeroBackgroundRight, AboutHeroRightTop, AboutHeroRightBottom, AboutHeroLeft } from '../../resources/about-hero'
 import { Container } from '../../styles/styles'
 
 export default function Hero({ data: { title, subTitle, subText } }) {

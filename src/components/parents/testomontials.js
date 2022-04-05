@@ -2,7 +2,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import { testomontialsSliderData } from '../../constants/sliders-data'
-import { TestomontialsQuote } from '../../resources/svg'
 import { Container } from '../../styles/styles'
 import Slider from './../childrens/slider'
 
@@ -16,7 +15,6 @@ export default function Testomontials({ data: { title, opinji } }) {
                         <React.Fragment key={el.autor}>
                             <SliderItem>
                                 <TextPart>
-                                    <TestomontialsQuote />
                                     <QuoteText>{el.recenzja}</QuoteText>
                                     <QuoteAuthor>{el.autor}</QuoteAuthor>
                                     <QuotePlace>{el.place}</QuotePlace>

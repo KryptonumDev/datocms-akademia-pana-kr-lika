@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Answer, Question, QuestionWrapper } from './../childrens/faq'
 import FaqArrow from './../../resources/faq.svg'
-import { TypeOneLeft, TypeOneRight } from '../../resources/svg'
+import { TypeOneLeft, TypeOneRight } from '../../resources/type-one'
 
 export default function Faq({ data: { img, questions, title } }) {
     return (

@@ -1,7 +1,7 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { TypeTwoLeft, TypeTwoRightTop, TypeTwoRightBottom } from '../../../resources/svg'
+import { TypeTwoLeft, TypeTwoRightTop, TypeTwoRightBottom } from '../../../resources/type-two'
 
 export default function ImageTypeTwo({ mainImage }) {
     return (

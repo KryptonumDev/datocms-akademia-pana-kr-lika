@@ -2,7 +2,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import { StructuredText } from "react-datocms"
 import styled from "styled-components"
-import { PostLeft, PostRight } from "../../resources/svg"
+import { PostLeft, PostRight } from "../../resources/post"
 import { Container } from "../../styles/styles"
 import Quote from './../../resources/quotes.svg'
 
