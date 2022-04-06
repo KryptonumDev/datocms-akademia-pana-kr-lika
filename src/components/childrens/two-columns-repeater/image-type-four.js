@@ -53,9 +53,8 @@ const Image = styled(GatsbyImage)`
    max-width: 500px;
    width: 100%;
    aspect-ratio: 1/1;
-
    @media (max-width:500px){
-       margin-left: 60px;
        width: unset;
+       margin: 0 30px;
    }
 `

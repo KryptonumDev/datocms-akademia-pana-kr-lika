@@ -17,6 +17,7 @@ export default function Blog({ data: { title, linkText, linkUrl }, posts: { node
                     {posts.map(el => (
                         <Link key={el.slug} to={'/blog/' + el.slug}>
                             <GridItem>
+                                <div className='category'>{el.category.name}</div>
                                 <div>
                                     <Image image={el.coverImage.small} />
                                     <h3>{el.title}</h3>
@@ -95,6 +96,21 @@ const GridItem = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
+    .category{
+        position: absolute;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 170%;
+        text-align: center;
+        color: #203662;
+        background: #FFFFFF;
+        border-radius: 100px;
+        padding: 13.5px 33px;
+        top: 28px;
+        right: 22px;
+        z-index: 3;
+    }
+
     h3{
         padding: 32px 32px 8px 32px;
         font-weight: 700;
@@ -152,4 +168,8 @@ const GridItem = styled.div`
 const Image = styled(GatsbyImage)`
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
+    height: 340px;
+    @media (max-width: 500px) {  
+        height: 259px;
+    }
 `

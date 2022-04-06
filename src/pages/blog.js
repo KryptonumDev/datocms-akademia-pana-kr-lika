@@ -7,9 +7,11 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import { Helmet } from 'react-helmet'
 
 export default function Blog({ data: { site, datoCmsBlog, allDatoCmsPost, allDatoCmsBlogCategory } }) {
+
     useEffect(() => {
         startTransition()
     }, [])
+
     return (
         <main id='main'>
             <HelmetDatoCms

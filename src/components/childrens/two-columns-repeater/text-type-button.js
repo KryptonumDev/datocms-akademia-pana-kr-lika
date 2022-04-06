@@ -32,6 +32,7 @@ const Text = styled.div`
         line-height: 170%;
         color: #394C71;
         margin: 32px 0;
+        max-width: 470px;
     }
 `
 

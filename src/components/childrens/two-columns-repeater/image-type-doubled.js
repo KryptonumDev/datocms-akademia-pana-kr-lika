@@ -60,6 +60,17 @@ const Wrapper = styled.div`
             right: -5px;
         }
     }
+    
+    img{
+        transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1), opacity .25s linear !important;
+    }
+
+    :hover{
+        img{
+            transform-origin: 50% 50%;
+            transform: scale(1.04);
+        }
+    }
 `
 
 const MainImage = styled(GatsbyImage)`
@@ -70,8 +81,8 @@ const MainImage = styled(GatsbyImage)`
     margin-bottom: 37px;
 
     @media (max-width: 500px){
-    margin-right: 43px;
-    margin-bottom: 21px;
+        margin-right: 43px;
+        margin-bottom: 21px;
 
     }
 `

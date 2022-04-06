@@ -11,27 +11,28 @@ export default function Hero({ data: { hero, post } }) {
             <Container>
                 <Flex>
                     <Title>{hero.title}</Title>
+                    <input placeholder="Szukaj" />
                 </Flex>
-                <Link to={post.slug}>
-                    <Content>
+                <Content>
+                    <Link to={post.slug}>
                         <Image image={post.coverImage.gatsbyImageData} alt={post.coverImage.alt} />
-                        <PostCard>
-                            <div className="new">
-                                Nowy wpis
-                            </div>
-                            <h2>{post.title}</h2>
-                            <p>{post.shortText}</p>
-                            <div className="flex">
-                                <span className="next">
-                                    {'Czytaj dalej ->'}
-                                </span>
-                                <span className="date">
-                                    {DateParser(post.date)}
-                                </span>
-                            </div>
-                        </PostCard>
-                    </Content>
-                </Link>
+                    </Link>
+                    <PostCard to={post.slug}>
+                        <div className="new">
+                            Nowy wpis
+                        </div>
+                        <h2>{post.title}</h2>
+                        <p>{post.shortText}</p>
+                        <div className="flex">
+                            <span className="next">
+                                {'Czytaj dalej ->'}
+                            </span>
+                            <span className="date">
+                                {DateParser(post.date)}
+                            </span>
+                        </div>
+                    </PostCard>
+                </Content>
             </Container>
         </Wrapper>
     )
@@ -39,20 +40,50 @@ export default function Hero({ data: { hero, post } }) {
 
 const Wrapper = styled.section`
     overflow: hidden;
+    margin-top: 160px; 
 `
 
 const Flex = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    input{
+        min-width: 350px;
+        border-radius: 50px;
+        padding: 13.5px 31px;
+        border: 1px solid #F3F5F8;
+
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;
+        color: #394C71;
+
+        &::placeholder{
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 150%;
+            color: #394C7180;
+        }
+
+    }
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+        align-items: flex-start;
+        input{
+            margin-top: 24px;
+        }
+    }
 `
 
 const Title = styled.h1`
     font-weight: 700;
-    font-size: clamp(48px, 4.8vw, 64px);
+    font-size: clamp(36px, 4.8vw, 64px);
     line-height: 100%;
     text-align: left;
     letter-spacing: -2px;
     color: #203662;
-    margin-top: 160px;
 `
 
 const Content = styled.div`
@@ -62,6 +93,10 @@ const Content = styled.div`
     width: 125%;
     margin-top: 50px;
 
+    a{
+        border-radius: 25px;
+    }
+
     @media (max-width: 760px) {
         flex-direction: column;
         width: 100%;
@@ -70,7 +105,9 @@ const Content = styled.div`
     }
 `
 
-const PostCard = styled.div`
+const PostCard = styled(Link)`
+    display: block;
+    min-width: 400px;
     width: 50%;
     transform: translateX(-50%);
     background-color: #fff;
@@ -153,7 +190,7 @@ const PostCard = styled.div`
 `
 
 const Image = styled(GatsbyImage)`
-    width: 75%;
+    width: 100%;
     border-radius: 25px;
 
     @media (max-width: 760px) {

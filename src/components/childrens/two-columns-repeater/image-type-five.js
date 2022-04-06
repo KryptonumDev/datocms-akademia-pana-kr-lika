@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     .left{
         position: absolute;
         z-index: 1;
-        left: -100px;
+        left: -40px;
         bottom: 20px;
         transform-origin: 0 100%;
     }
@@ -63,14 +63,15 @@ const Wrapper = styled.div`
 `
 
 const Image = styled(GatsbyImage)`
-   border-radius: 25px;
-   position: relative;
-   z-index: 2;
-   max-width: 500px;
-   width: 100%;
-   aspect-ratio: 1/1;
-   @media (max-width:500px){
-       width: unset;
-       margin: 0 30px;
-   }
+    border-radius: 25px;
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin-left: 60px;
+
+    @media (max-width:500px){
+        width: unset;
+    }
 `

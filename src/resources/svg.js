@@ -1,20 +1,6 @@
 import React from 'react'
 
 
-
-
-export const TestomontialsQuote = () => (
-    <svg width="60" height="35" viewBox="0 0 60 35" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-        <rect width="60" height="35" fill="url(#pattern2)" />
-        <defs>
-            <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
-                <use xlinkHref="#image0_16_3668" transform="scale(0.0166667 0.0285714)" />
-            </pattern>
-            <image id="image0_16_3668" width="60" height="35" xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAjCAYAAADIfGk8AAADGUlEQVRoBc1ZPY4TMRSeI3AEjrAXQHAD9gh7hBT02TqxSQrq/RwK6jRIdKSgoNsUi0ACabehQUjhR6JDDz3/RDOTscde2yNWWs1kxvb3fc/P7z17mibhjxY4I6GuSai3Cd2KN6UVHlge18UHdwNqsVIdSCoiib17PvXV8rh1PFh8cQ4kcWEAWKz6TOLqVXGQiAG7RlffaInXEd3SmpDAeUssCyZa4WHaKPmtzXLCjw6XJZ7kj9wawYL86oAIqFaTSW7ZwCTVTxLaw4zRJXZFwQfF8uyWtuoIax2glvjUMbqJIxcjXeNfmyiIDycgAnfxo5RpSRLvTniYZVUuWJHAehBEYF1GRtwoJDHrurFz6YLuzC47KJatKtRHzsHHf7mZ0/OXj+Pop7WyEfm3h8vtkQPz0Tw2T9MQmqbRrsy5thMcnFW1YBswWs/0euL8vJmXzImc6z1i2fABHmoVzYMkLr0gRpgPyD0/cM5OtnSvg877flEhwfE8Rmc3TrAF3Mx7GpJ+ksBdpuGdcHiB9eyGrJokmF0Ol16wwIteVeeI51xPRdvZ/VPIqi1y6e5NS3yvwGPWsTHJq2flQXRgOUQHEA6aCzyqxKNbDpPAl2pACa5NAu+r8XAlsa1TW27oDfn3bXPouFPgBwn8rSaYYxBvekjgRVUQBhI4D+jUrwZ3ZcmBcmyyMGto6alVS4JFlKQk8Ka64SW2PMNfJwAa3cqRCFRWxYyPXVNfrM7JMYIHtoBjLpr+/v8RLHEzhfHZpUuVcYEoPr6dI4ldfcHYN5MAuRwYCNUksZ1AMK/h7B1SYGbdGhsvMSvU0AO8OC3x4XqxKOgE9q4RZ8e2nh8g2Rsrh+sCZybp11w/Ee7sPJ0EVD3jt+JI8Fgnx6LcN+EMu2qZ2z9trWPd9D2x9wAxx/BDXmbWUMlqB1vnqqnXshEbe+8WtZxo7LwgEeotjwJ5OSDW8dBgOcEjYqPgsMauWe7NGiKyw5GDCWQpLo5djc8wlkfCbGfysN+Y1roiE62vd/qey0HMuM3RUpVuTL2AmZcHfy2ZgEclefWG/QcjKOJ0FFpNhgAAAABJRU5ErkJggg==" />
-        </defs>
-    </svg>
-)
-
 export const Arrow = () => (
     <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" clipRule="evenodd" d="M8.293 0.792786C8.48053 0.605315 8.73484 0.5 9 0.5C9.26516 0.5 9.51947 0.605315 9.707 0.792786L15.707 6.79279C15.8945 6.98031 15.9998 7.23462 15.9998 7.49979C15.9998 7.76495 15.8945 8.01926 15.707 8.20679L9.707 14.2068C9.5184 14.3889 9.2658 14.4897 9.0036 14.4875C8.7414 14.4852 8.49059 14.38 8.30518 14.1946C8.11977 14.0092 8.0146 13.7584 8.01233 13.4962C8.01005 13.234 8.11084 12.9814 8.293 12.7928L12.586 8.49979H1C0.734784 8.49979 0.48043 8.39443 0.292893 8.20689C0.105357 8.01936 0 7.765 0 7.49979C0 7.23457 0.105357 6.98022 0.292893 6.79268C0.48043 6.60514 0.734784 6.49979 1 6.49979H12.586L8.293 2.20679C8.10553 2.01926 8.00021 1.76495 8.00021 1.49979C8.00021 1.23462 8.10553 0.980314 8.293 0.792786Z" fill="#DB2777" />

@@ -19,7 +19,9 @@ export default function BlogPosts({ data: { categories, posts, content: { title 
             : changeFiltredArray(preFiltredArray.filter(el => el.category.slug === filterSlug))
         document.querySelectorAll('.buttonFilter').forEach(el => el.classList.remove('active'))
         document.getElementById(filterSlug).classList.add('active')
-        changeShowCount(4)
+        if (showCount !== 4) {
+            changeShowCount(4)
+        }
     }
 
     useEffect(() => {
@@ -27,60 +29,67 @@ export default function BlogPosts({ data: { categories, posts, content: { title 
     }, [])
 
     return (
-        <Wrapper>
-            <Container>
-                <Flex>
-                    <Title>{title}</Title>
-                    <Categories>
-                        <Button className="buttonFilter" id='all' onClick={() => { changeFilter('all') }} as='button'>Wszystkie wpisy</Button>
-                        {categories.map(el => (
-                            <Button key={el.name} className="buttonFilter" id={el.slug} onClick={() => { changeFilter(el.slug) }} as='button'>{el.name}</Button>
-                        ))}
-                    </Categories>
-                </Flex>
-                <AnimateSharedLayout>
-                    <AnimatePresence exitBeforeEnter>
-                        <PostsGrid layout>
-                            {filtredArray.map((el, index) => (
-                                <React.Fragment key={el.slug}>
-                                    {index < showCount
-                                        ? (
-                                            <Link to={el.slug}>
-                                                <Post
-                                                    initial={{ opacity: 0 }}
-                                                    animate={{ opacity: 1 }}
-                                                    exit={{ opacity: 0 }}
-                                                    layout>
-                                                    <div className='category'>{el.category.name}</div>
-                                                    <div>
-                                                        <Image image={el.coverImage.gatsbyImageData} alt={el.coverImage.alt} />
-                                                        <h3>{el.title}</h3>
-                                                        <p>{el.shortText}</p>
-                                                    </div>
-                                                    <div className="flex">
-                                                        <span className="next">
-                                                            {'Czytaj dalej ->'}
-                                                        </span>
-                                                        <span className="date">
-                                                            {DateParser(el.date)}
-                                                        </span>
-                                                    </div>
-                                                </Post>
-                                            </Link>
-                                        )
-                                        : null
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </PostsGrid>
-                    </AnimatePresence>
-                </AnimateSharedLayout>
-                {showCount < filtredArray.length
-                    ? <ShowMore as='button' onClick={() => { changeShowCount(showCount + 4) }}>Pokaż więcej!</ShowMore>
-                    : null
-                }
-            </Container>
-        </Wrapper >
+        <React.Fragment>
+            {preFiltredArray.length > 0
+                ? (
+                    <Wrapper>
+                        <Container>
+                            <Flex>
+                                <Title>{title}</Title>
+                                <Categories>
+                                    <Button className="buttonFilter" id='all' onClick={() => { changeFilter('all') }} as='button'>Wszystkie wpisy</Button>
+                                    {categories.map(el => (
+                                        <Button key={el.name} className="buttonFilter" id={el.slug} onClick={() => { changeFilter(el.slug) }} as='button'>{el.name}</Button>
+                                    ))}
+                                </Categories>
+                            </Flex>
+                            <AnimateSharedLayout>
+                                <AnimatePresence exitBeforeEnter>
+                                    <PostsGrid layout>
+                                        {filtredArray.map((el, index) => (
+                                            <React.Fragment key={el.slug}>
+                                                {index < showCount
+                                                    ? (
+                                                        <Link to={el.slug}>
+                                                            <Post
+                                                                initial={{ opacity: 0 }}
+                                                                animate={{ opacity: 1 }}
+                                                                exit={{ opacity: 0 }}
+                                                                layout>
+                                                                <div className='category'>{el.category.name}</div>
+                                                                <div>
+                                                                    <Image image={el.coverImage.gatsbyImageData} alt={el.coverImage.alt} />
+                                                                    <h3>{el.title}</h3>
+                                                                    <p>{el.shortText}</p>
+                                                                </div>
+                                                                <div className="flex">
+                                                                    <span className="next">
+                                                                        {'Czytaj dalej ->'}
+                                                                    </span>
+                                                                    <span className="date">
+                                                                        {DateParser(el.date)}
+                                                                    </span>
+                                                                </div>
+                                                            </Post>
+                                                        </Link>
+                                                    )
+                                                    : null
+                                                }
+                                            </React.Fragment>
+                                        ))}
+                                    </PostsGrid>
+                                </AnimatePresence>
+                            </AnimateSharedLayout>
+                            {showCount < filtredArray.length
+                                ? <ShowMore as='button' onClick={() => { changeShowCount(showCount + 4) }}>Pokaż więcej!</ShowMore>
+                                : null
+                            }
+                        </Container>
+                    </Wrapper >
+                )
+                : null
+            }
+        </React.Fragment>
     )
 }
 
@@ -239,9 +248,8 @@ const Image = styled(GatsbyImage)`
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 
-    @media (max-width: 760px) {  
-        height: 340px;
-    }
+    height: 340px;
+
     @media (max-width: 500px) {  
         height: 259px;
     }

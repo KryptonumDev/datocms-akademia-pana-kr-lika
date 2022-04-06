@@ -93,6 +93,10 @@ export const query = graphql`
         slug
         shortText
         date
+        category{
+          name
+          slug
+        }
         coverImage {
           large: gatsbyImageData(width: 1500)
           small: gatsbyImageData(width: 760)

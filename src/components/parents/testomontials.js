@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { testomontialsSliderData } from '../../constants/sliders-data'
 import { Container } from '../../styles/styles'
 import Slider from './../childrens/slider'
+import { TestomntialsRight, TestomontialsQuote } from '../../resources/testomontial'
 
 export default function Testomontials({ data: { title, opinji } }) {
     return (
@@ -15,11 +16,15 @@ export default function Testomontials({ data: { title, opinji } }) {
                         <React.Fragment key={el.autor}>
                             <SliderItem>
                                 <TextPart>
+                                    <TestomontialsQuote />
                                     <QuoteText>{el.recenzja}</QuoteText>
                                     <QuoteAuthor>{el.autor}</QuoteAuthor>
                                     <QuotePlace>{el.place}</QuotePlace>
                                 </TextPart>
-                                <Image image={el.img.gatsbyImageData} />
+                                <ImageWrapper>
+                                    <Image image={el.img.gatsbyImageData} />
+                                    <TestomntialsRight />
+                                </ImageWrapper>
                             </SliderItem>
                         </React.Fragment>
                     ))}
@@ -108,12 +113,23 @@ const QuotePlace = styled.span`
 `
 
 const Image = styled(GatsbyImage)`
-    min-width: 340px;
+    max-width: 340px;
 
     @media (max-width: 764px){
         margin-bottom: 50px;
         width: 100%;
         max-width: 340px;
         min-width: unset;
+    }
+`
+
+const ImageWrapper = styled.div`
+    position: relative;
+
+    .right{
+        position: absolute;
+        top: 50px;
+        right: 10px;    
+        z-index: -1;
     }
 `

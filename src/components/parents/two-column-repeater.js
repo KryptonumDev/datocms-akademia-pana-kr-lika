@@ -50,6 +50,7 @@ const Item = styled.div`
 
 
     ${({ repeaterType }) => repeaterType === 'persons' && css`
+    justify-content: space-between;
     :nth-child(2n - 1) {
         flex-direction: row-reverse; 
         .imgPart{
@@ -117,6 +118,10 @@ const Item = styled.div`
         margin-right: 0!important;
         }
 
+        :nth-child(n){
+            align-items: flex-start;
+        }
+
         :nth-child(2n){
             flex-direction: column;
 
@@ -154,8 +159,20 @@ const Item = styled.div`
     `}
 
     ${({ repeaterType }) => repeaterType === 'solo' && css`
+
+    .textPart{
+        h2{
+            font-size: clamp(32px, 3vw, 36px);
+            max-width: 470px;
+        }
+
+        p{
+            max-width: 470px;
+        }
+    }
     :nth-child(2n - 1){
         flex-direction: row-reverse;
+        justify-content: space-between;
         .imgPart{
             margin-left: 30px;
         }
@@ -183,6 +200,17 @@ const Item = styled.div`
 
     @media(max-width: 1023px){
 
+        .textPart{
+            h2{
+                margin-top: 56px;
+                max-width: unset;
+            }
+
+            p{
+                max-width: unset;
+            }
+        }
+
         .imgPart{
             margin: 0;
         }
@@ -190,6 +218,7 @@ const Item = styled.div`
         :nth-child(2n - 1){
             flex-direction: column;
             margin: 90px clamp(0px,7vw,100px) 0 clamp(0px,7vw,100px);
+            align-items: flex-start;
 
             .imgPart{
                 margin: 0;
@@ -218,7 +247,7 @@ const Item = styled.div`
             margin: 90px 0 0 0;
 
             .textPart{
-                margin-top: 60px;
+                margin-top: 0;
             }
         }
 

@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     }
 `
 
-const Title = styled.h3`
+const Title = styled.h2`
     font-weight: 700;
     font-size: clamp(32px, 6.4vw, 48px);
     line-height: 100%; 
@@ -38,6 +38,7 @@ const Text = styled.div`
         line-height: 170%;
         color: #394C71;
         margin: 32px 0;
+        max-width: 470px;
     }
 
     ul{

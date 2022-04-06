@@ -44,17 +44,14 @@ const StyledLink = styled(Link)`
 
     :last-child{
         padding: 13.5px 31px;
-        background-color: #55B83B;
+        background-color: #26870c;
         color: #fff;
         margin: 0 0 0 31px;
 
         &:hover{
-            background-color: rgb(57, 143, 35);
         }
 
         &.active{
-            color: #fff; 
-            background-color: rgb(57, 143, 35);
         }
     }
 

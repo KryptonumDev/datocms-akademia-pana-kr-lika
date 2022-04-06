@@ -1,9 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { OfferSteps, OfferHeroLeft, OfferHeroLeftBottom, OfferHeroRight } from '../../resources/offer'
 import { Container } from '../../styles/styles'
+import {animStart} from './../../functions/animation-start'
 
 export default function Hero({ data: { title, subTitle, steps } }) {
+
     return (
         <Wrapper>
             <OfferHeroLeft />
@@ -14,7 +16,7 @@ export default function Hero({ data: { title, subTitle, steps } }) {
                 <StepsTitle>{subTitle}</StepsTitle>
                 <Steps>
                     {steps.map((el, index) => (
-                        <StepsItem key={el.title}>
+                        <StepsItem onMouseEnter={(el) => { animStart(el) }} key={el.title}>
                             <StepNumber numColor={el.color.hex}>
                                 <OfferSteps />
                                 {'0' + (index + 1)}
@@ -25,9 +27,21 @@ export default function Hero({ data: { title, subTitle, steps } }) {
                     ))}
                 </Steps>
             </Container>
-        </Wrapper>
+        </Wrapper >
     )
 }
+
+const trambling = keyframes`
+	0%,50%,100%{
+		transform:rotate(0deg);
+	}
+	10%,30%{
+		transform:rotate(-1deg);
+	}
+	20%,40%{
+		transform:rotate(1deg);
+	}
+`
 
 const Wrapper = styled.section`
     position: relative;
@@ -139,6 +153,10 @@ const StepsItem = styled.div`
     box-sizing: border-box;
     border-radius: 25px;
     padding: 33px 36px;
+
+    &.animated{
+        animation: 1s ${trambling} ease-out;
+    }
 
     h3{
         margin-bottom: 16px;

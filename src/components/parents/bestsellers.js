@@ -61,6 +61,11 @@ const GridItem = styled.div`
     box-sizing: border-box;
     border-radius: 25px;
     height: 100%;
+    transition: transform .4s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+    &:hover{
+        transform: translateY(-6px);
+    }
 
     h3{
         font-weight: 700;
@@ -86,4 +91,5 @@ const GridItem = styled.div`
 const Image = styled(GatsbyImage)`
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
+    width: 100%;
 `
