@@ -30,7 +30,7 @@ export default function Header({ data: { logo, menu } }) {
                 <Flex>
                     <ImageWrapper>
                         <Link aria-label='link do strony głównej' to='/'>
-                            <Image image={logo.gatsbyImageData} />
+                            <Image image={logo.gatsbyImageData} alt={logo.alt}/>
                         </Link>
                         <MobileOpen id='mobileOpen' aria-label="otwórzyć lub zamknąć meni mobilne" isOpened={isOpened} onClick={() => { changeIsOpened(!isOpened) }}>
                             <span></span>

@@ -7,7 +7,7 @@ export default function ImageTypeTwo({ mainImage }) {
     return (
         <Wrapper className='imgPart'>
             <TypeTwoLeft />
-            <Image image={mainImage.gatsbyImageData} />
+            <Image image={mainImage.gatsbyImageData} alt={mainImage.alt} />
             <TypeTwoRightTop />
             <TypeTwoRightBottom />
         </Wrapper>

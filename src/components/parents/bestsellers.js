@@ -13,7 +13,7 @@ export default function Bestsellers({ data: { title }, warsztaty }) {
                     {warsztaty.map(({ node: el }) => (
                         <Link key={el.slug} to={'/warsztaty/' + el.slug}>
                             <GridItem>
-                                <Image image={el.previewImg.gatsbyImageData} />
+                                <Image image={el.previewImg.gatsbyImageData} alt={el.previewImg.alt} />
                                 <h3>{el.nazwaWarsztatu}</h3>
                                 <p>{el.previewText}</p>
                             </GridItem>

@@ -7,8 +7,8 @@ export default function ImageTypeThree({ mainImage, additionalImage }) {
     return (
         <Wrapper className='imgPart'>
             <TypeDoubledLeft />
-            <MainImage image={mainImage.gatsbyImageData} />
-            <AdditionalImage image={additionalImage.gatsbyImageData} />
+            <MainImage image={mainImage.gatsbyImageData} alt={mainImage.alt}/>
+            <AdditionalImage image={additionalImage.gatsbyImageData} alt={additionalImage.alt}/>
             <TypeDoubledRight />
         </Wrapper>
     )

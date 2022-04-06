@@ -8,7 +8,7 @@ export default function ImageTypeOne({ mainImage }) {
         <Wrapper className='imgPart'>
             <TypeOneLeft />
             <TypeOneRight />
-            <Image image={mainImage.gatsbyImageData} />
+            <Image image={mainImage.gatsbyImageData} alt={mainImage.alt} />
         </Wrapper>
     )
 }

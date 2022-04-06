@@ -8,7 +8,7 @@ export default function Hero({ data: { title, textParagraph, img, content } }) {
     return (
         <Wrapper>
             <Container>
-                <Image image={img.gatsbyImageData} />
+                <Image image={img.gatsbyImageData} alt={img.alt}/>
                 <Flex>
                     <div>
                         <Title>{title}</Title>

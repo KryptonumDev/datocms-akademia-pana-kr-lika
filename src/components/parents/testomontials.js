@@ -22,7 +22,7 @@ export default function Testomontials({ data: { title, opinji } }) {
                                     <QuotePlace>{el.place}</QuotePlace>
                                 </TextPart>
                                 <ImageWrapper>
-                                    <Image image={el.img.gatsbyImageData} />
+                                    <Image image={el.img.gatsbyImageData} alt={el.img.alt}/>
                                     <TestomntialsRight />
                                 </ImageWrapper>
                             </SliderItem>

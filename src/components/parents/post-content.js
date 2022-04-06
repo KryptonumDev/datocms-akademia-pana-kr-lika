@@ -16,7 +16,7 @@ export default function Content({ data: { category, content, shortText, title, s
                 <ImageWrapper>
                     <PostLeft />
                     <PostRight />
-                    <Image image={coverImage.gatsbyImageData} />
+                    <Image image={coverImage.gatsbyImageData} alt={coverImage.alt}/>
                 </ImageWrapper>
                 <ContentBox>
                     <StructuredText data={content} />

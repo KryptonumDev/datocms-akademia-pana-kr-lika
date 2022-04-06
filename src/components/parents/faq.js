@@ -15,7 +15,7 @@ export default function Faq({ data: { img, questions, title } }) {
                     <ImgContainer>
                         <TypeOneLeft />
                         <TypeOneRight />
-                        <Image image={img.gatsbyImageData} />
+                        <Image image={img.gatsbyImageData} alt={img.alt} />
                     </ImgContainer>
                     <QuestionsContainer>
                         {questions.map(el => (

@@ -19,7 +19,7 @@ export default function Blog({ data: { title, linkText, linkUrl }, posts: { node
                             <GridItem>
                                 <div className='category'>{el.category.name}</div>
                                 <div>
-                                    <Image image={el.coverImage.small} />
+                                    <Image image={el.coverImage.small} alt={el.coverImage.alt}/>
                                     <h3>{el.title}</h3>
                                     <p>{el.shortText}</p>
                                 </div>

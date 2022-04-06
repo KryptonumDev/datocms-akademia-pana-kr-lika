@@ -25,7 +25,7 @@ export default function NavigationItemMega({ changeIsOpenedOuter, data: { slug, 
                     {menuItem.map(el => (
                         <li key={el.name}>
                             <Link tabIndex={isOpened ? '0' : '-1'} onClick={() => { Close() }} to={'/warsztaty/' + el.slug}>
-                                <GatsbyImage className="img" image={el.img.gatsbyImageData} />
+                                <Image className="img" image={el.img.gatsbyImageData} alt={el.img.alt}/>
                                 <p className="title">{el.name}</p>
                                 <p className="text">{el.shortDescription}</p>
                             </Link>
@@ -198,4 +198,15 @@ const MegaMeni = styled.div`
             grid-template-columns: 1fr;
         }
     }
+`
+
+const Image = styled(GatsbyImage)`
+    display: block !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+
+    div{
+        display: block !important;
+        padding: 0 !important;
+    }   
 `

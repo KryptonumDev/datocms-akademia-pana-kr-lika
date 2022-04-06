@@ -47,6 +47,7 @@ export const query = graphql`
       }
       date
       coverImage {
+        alt
         gatsbyImageData(width: 1500)
       }
       otherPosts {
@@ -71,6 +72,7 @@ export const query = graphql`
         }
         coverImage {
           small: gatsbyImageData(width: 760)
+          alt
         }
       }
     }

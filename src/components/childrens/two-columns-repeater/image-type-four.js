@@ -7,7 +7,7 @@ export default function ImageTypeFive({ mainImage }) {
     return (
         <Wrapper className='imgPart'>
             <TypeFourLeft />
-            <Image image={mainImage.gatsbyImageData} />
+            <Image image={mainImage.gatsbyImageData}  alt={mainImage.alt}/>
             <TypeFourRight />
         </Wrapper>
     )
