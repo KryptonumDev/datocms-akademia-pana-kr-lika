@@ -6,8 +6,8 @@ import { StyledLink } from '../../../styles/styles'
 export default function TextTypeButton({ linkText, linkUrl, text, title }) {
     return (
         <Wrapper className='textPart'>
-            <Title>{title}</Title>
-            <Text><StructuredText data={text} /></Text>
+            <Title><StructuredText data={title} /></Title>
+            <Text ><StructuredText data={text} /></Text>
             <Link to={linkUrl}>{linkText}</Link>
         </Wrapper>
     )
@@ -17,12 +17,18 @@ const Wrapper = styled.div`
     margin-top: 50px;
 `
 
-const Title = styled.h2`
-    font-weight: 700;
-    font-size: clamp(32px, 6.4vw, 48px);
-    line-height: 100%; 
-    letter-spacing: -1px;
-    color: #203662;
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 700;
+        font-size: clamp(32px, 6.4vw, 48px);
+        line-height: 100%; 
+        letter-spacing: -1px;
+        color: #203662;
+
+        @media (max-width: 360px) {
+            font-size: 28px;
+        }
+    }
 `
 
 const Text = styled.div`

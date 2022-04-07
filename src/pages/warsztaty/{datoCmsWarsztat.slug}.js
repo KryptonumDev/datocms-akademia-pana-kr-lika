@@ -11,7 +11,7 @@ import { Helmet } from 'react-helmet'
 
 export default function Warsztat({ data: { site, datoCmsWarsztat } }) {
     useEffect(() => {
-      startTransition()
+        startTransition()
     }, [])
     return (
         <main id='main'>
@@ -44,7 +44,9 @@ export const query = graphql`
             previewText
             nazwaWarsztatu
             hero {
-                title
+                pageTitle{
+                    value
+                  }
                 textParagraph{
                     value
                 }
@@ -57,11 +59,15 @@ export const query = graphql`
                 }
             }
             repeater {
-                title
+                sectionTitle{
+                    value
+                  }
                 repeater {
                     ... on DatoCmsRepeaterTwoColumn {
                         id
-                        title
+                        blockTitle{
+                            value
+                          }
                         textParagraph {
                             value
                         }
@@ -74,18 +80,26 @@ export const query = graphql`
                 }
             }
             kontakt {
-                title
-                text
+                sectionTitle{
+                    value
+                  }
+                text{
+                    value
+                  }
                 }
-                images {
-                title
+            images {
+                sectionTitle{
+                    value
+                  }
                 images {
                     gatsbyImageData
                     alt
                 }
             }
             faq {
-                title
+                sectionTitle{
+                    value
+                  }
                 questions {
                     answer
                     question

@@ -39,25 +39,41 @@ query OfertaQuery {
         ...GatsbyDatoCmsSeoMetaTags
       }
       hero {
-        title
-        subTitle
+        pageTitle{
+          value
+        }
+        sectionTitle{
+          value
+        }
         steps {
-          title
-          text
+          stepTitle{
+            value
+          }
+          stepText{
+            value
+          }
           color {
             hex
           }
         }
       }
       bestsellers {
-        title
+        sectionTitle{
+          value
+        }
       }
       kontakt {
-        title
-        text
+        sectionTitle{
+          value
+        }
+        text{
+          value
+        }
       }
       repeater {
-        title
+        sectionTitle{
+          value
+        }
         repeater {
           ... on DatoCmsRepeaterTwoColumn {
             id
@@ -66,7 +82,9 @@ query OfertaQuery {
               alt
             }
             imgType
-            title
+            blockTitle{
+              value
+            }
             textParagraph {
               value
             }

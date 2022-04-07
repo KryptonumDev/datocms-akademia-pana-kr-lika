@@ -1,10 +1,11 @@
 import React from 'react'
+import { StructuredText } from 'react-datocms'
 import styled, { keyframes } from 'styled-components'
 import { OfferSteps, OfferHeroLeft, OfferHeroLeftBottom, OfferHeroRight } from '../../resources/offer'
 import { Container } from '../../styles/styles'
-import {animStart} from './../../functions/animation-start'
+import { animStart } from './../../functions/animation-start'
 
-export default function Hero({ data: { title, subTitle, steps } }) {
+export default function Hero({ data: { pageTitle, sectionTitle, steps } }) {
 
     return (
         <Wrapper>
@@ -12,8 +13,8 @@ export default function Hero({ data: { title, subTitle, steps } }) {
             <OfferHeroLeftBottom />
             <OfferHeroRight />
             <Container>
-                <Title>{title}</Title>
-                <StepsTitle>{subTitle}</StepsTitle>
+                <Title ><StructuredText data={pageTitle} /></Title>
+                <StepsTitle><StructuredText data={sectionTitle} /></StepsTitle>
                 <Steps>
                     {steps.map((el, index) => (
                         <StepsItem onMouseEnter={(el) => { animStart(el) }} key={el.title}>
@@ -21,8 +22,8 @@ export default function Hero({ data: { title, subTitle, steps } }) {
                                 <OfferSteps />
                                 {'0' + (index + 1)}
                             </StepNumber>
-                            <h3>{el.title}</h3>
-                            <p>{el.text}</p>
+                            <StructuredText data={el.stepTitle}/>
+                            <StructuredText data={el.stepText}/>
                         </StepsItem>
                     ))}
                 </Steps>
@@ -95,38 +96,42 @@ const Wrapper = styled.section`
     }
 `
 
-const Title = styled.h1`
-    padding: 280px 0 250px 0;
-    font-weight: 700;
-    font-size: clamp(48px, 4.8vw, 64px);
-    line-height: 100%;
-    text-align: center;
-    letter-spacing: -2px;
-    color: #203662;
-    position: relative;
-    z-index: 4;
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        padding: 280px 0 250px 0;
+        font-weight: 700;
+        font-size: clamp(48px, 4.8vw, 64px);
+        line-height: 100%;
+        text-align: center;
+        letter-spacing: -2px;
+        color: #203662;
+        position: relative;
+        z-index: 4;
 
-    @media (max-width: 960px) {
-        padding: 220px 0 315px 0;
-        
-    }
+        @media (max-width: 960px) {
+            padding: 220px 0 315px 0;
+            
+        }
 
-    @media (max-width: 640px) {
-        padding: 160px 0 380px 0;
-        
+        @media (max-width: 640px) {
+            padding: 160px 0 380px 0;
+            
+        }
     }
 `
 
-const StepsTitle = styled.h2`
-    font-weight: 700;
-    font-size: clamp(32px, 6vw, 48px);
-    line-height: 100%;
-    text-align: center;
-    letter-spacing: -1px;
-    color: #203662;
-    max-width: 750px;
-    margin: 0 auto;
-`
+const StepsTitle = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 700;
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 100%;
+        text-align: center;
+        letter-spacing: -1px;
+        color: #203662;
+        max-width: 750px;
+        margin: 0 auto;
+    }
+ `
 
 const Steps = styled.div`
     padding: 100px 0 120px 0;

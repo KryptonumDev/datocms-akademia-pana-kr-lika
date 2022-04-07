@@ -29,16 +29,16 @@ export const ImagePart = ({ imgType, mainImg, additionalImg }) => {
     }
 }
 
-export const TextPart = ({ repeaterType, linkText, linkUrl, text, title }) => {
+export const TextPart = ({ repeaterType, linkText, linkUrl, text, blockTitle }) => {
     switch (repeaterType) {
         case REPEATER_TYPES.BUTTON:
-            return <TextTypeButton linkText={linkText} linkUrl={linkUrl} text={text} title={title} />
+            return <TextTypeButton linkText={linkText} linkUrl={linkUrl} text={text} title={blockTitle} />
         case REPEATER_TYPES.PERSONS:
-            return <TextTypeClassic text={text} title={title} />
+            return <TextTypeClassic text={text} title={blockTitle} />
         case REPEATER_TYPES.SOLO:
-            return <TextTypeClassic text={text} title={title} />
+            return <TextTypeClassic text={text} title={blockTitle} />
         case REPEATER_TYPES.LIST:
-            return <TextTypeClassic text={text} title={title} />
+            return <TextTypeClassic text={text} title={blockTitle} />
         default:
             return null
     }

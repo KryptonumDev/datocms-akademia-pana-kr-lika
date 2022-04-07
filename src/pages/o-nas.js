@@ -41,14 +41,20 @@ query MyQuery {
         ...GatsbyDatoCmsSeoMetaTags
       }
       sekcjaPowitalna {
-        title
-        subTitle
+        pageTitle{
+          value
+        }
+        sectionTitle{
+          value
+        }
         subText {
             value
         }
       }
       repater {
-        title
+        sectionTitle{
+          value
+        }
         repeater {
           ... on DatoCmsRepeaterTwoColumn {
             id
@@ -57,7 +63,9 @@ query MyQuery {
               gatsbyImageData
               alt
             }
-            title
+            blockTitle{
+              value
+            }
             textParagraph {
               value
             }
@@ -65,11 +73,19 @@ query MyQuery {
         }
       }
       testomontials {
-        title
+        sectionTitle{
+          value
+        }
         opinji {
-          recenzja
-          autor
-          place
+          recenzja{
+            value
+          }
+          autor{
+            value
+          }
+          place{
+            value
+          }
           img {
             alt
             gatsbyImageData
@@ -77,15 +93,21 @@ query MyQuery {
         }
       }
       images {
-        title
+        sectionTitle{
+          value
+        }
         images {
           alt
           gatsbyImageData
         }
       }
       kontakt{
-        title
-        text
+        sectionTitle{
+          value
+        }
+        text{
+          value
+        }
       }
     }
   }

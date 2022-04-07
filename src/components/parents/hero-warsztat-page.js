@@ -4,17 +4,15 @@ import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
 import { Container } from '../../styles/styles'
 
-export default function Hero({ data: { title, textParagraph, img, content } }) {
+export default function Hero({ data: { pageTitle, textParagraph, img, content } }) {
     return (
         <Wrapper>
             <Container>
-                <Image image={img.gatsbyImageData} alt={img.alt}/>
+                <Image image={img.gatsbyImageData} alt={img.alt} />
                 <Flex>
                     <div>
-                        <Title>{title}</Title>
-                        <Text>
-                            <StructuredText data={textParagraph} />
-                        </Text>
+                        <Title ><StructuredText data={pageTitle} /></Title>
+                        <Text data={textParagraph} />
                     </div>
                     <List>
                         <StructuredText data={content} />
@@ -22,6 +20,7 @@ export default function Hero({ data: { title, textParagraph, img, content } }) {
                 </Flex>
             </Container>
         </Wrapper>
+
     )
 }
 
@@ -51,20 +50,24 @@ const Flex = styled.div`
     }
 `
 
-const Title = styled.h1`
-    font-weight: 700;
-    font-size: clamp(32px, 6vw, 48px);
-    line-height: 100%;
-    letter-spacing: -1px;
-    color: #203662;
-    margin-bottom: 32px;
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 700;
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 100%;
+        letter-spacing: -1px;
+        color: #203662;
+        margin-bottom: 32px;
+    }
 `
 
-const Text = styled.div`
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 170%;
-    color: #394C71;
+const Text = styled(StructuredText)`
+    p{
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 170%;
+        color: #394C71;
+    }
 `
 
 const List = styled.div`

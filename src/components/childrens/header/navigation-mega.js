@@ -24,11 +24,10 @@ export default function NavigationItemMega({ changeIsOpenedOuter, data: { slug, 
                 <ul className="ul">
                     {menuItem.map(el => (
                         <li key={el.name}>
-                            <Link tabIndex={isOpened ? '0' : '-1'} onClick={() => { Close() }} to={'/warsztaty/' + el.slug}>
-                                <Image className="img" image={el.img.gatsbyImageData} alt={el.img.alt}/>
-                                <p className="title">{el.name}</p>
-                                <p className="text">{el.shortDescription}</p>
-                            </Link>
+                            <Link aria-label={'link do strony warsztatu ' + el.name} tabIndex={isOpened ? '0' : '-1'} onClick={() => { Close() }} to={'/warsztaty/' + el.slug} />
+                            <Image className="img" image={el.img.gatsbyImageData} alt={el.img.alt} />
+                            <p className="title">{el.name}</p>
+                            <p className="text">{el.shortDescription}</p>
                         </li>
                     ))}
                 </ul>
@@ -111,6 +110,10 @@ const MegaMeni = styled.div`
     display: block !important;
     overflow: hidden !important;
 
+    a{
+        border-radius: 8px;
+    }
+
     .ul{
         display: grid;
         gap: 24px;
@@ -120,6 +123,17 @@ const MegaMeni = styled.div`
         li{
             padding: 16px;
             text-align: left;
+            position: relative;
+
+            a{
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 3;
+                border-radius: 25px;
+            }
 
             .img{
                 width: 60px;

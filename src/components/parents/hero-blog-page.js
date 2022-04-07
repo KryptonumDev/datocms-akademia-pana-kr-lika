@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
+import { StructuredText } from "react-datocms"
 import styled from 'styled-components'
 import { DateParser } from "../../functions/datae-parser"
 import { Container } from "../../styles/styles"
@@ -10,8 +11,9 @@ export default function Hero({ data: { hero, post } }) {
         <Wrapper>
             <Container>
                 <Flex>
-                    <Title>{hero.title}</Title>
-                    <input placeholder="Szukaj" />
+                    
+                    <Title data={hero.title}/>
+                    {/* <input placeholder="Szukaj" /> */}
                 </Flex>
                 <Content>
                     <Link to={post.slug}>
@@ -77,13 +79,15 @@ const Flex = styled.div`
     }
 `
 
-const Title = styled.h1`
-    font-weight: 700;
-    font-size: clamp(36px, 4.8vw, 64px);
-    line-height: 100%;
-    text-align: left;
-    letter-spacing: -2px;
-    color: #203662;
+const Title = styled(StructuredText)`
+    h1{
+        font-weight: 700;
+        font-size: clamp(36px, 4.8vw, 64px);
+        line-height: 100%;
+        text-align: left;
+        letter-spacing: -2px;
+        color: #203662;
+    }
 `
 
 const Content = styled.div`

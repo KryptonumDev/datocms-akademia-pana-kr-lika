@@ -1,21 +1,22 @@
 import React from 'react'
+import { StructuredText } from 'react-datocms'
 import styled, { css } from 'styled-components'
 import { Container } from '../../styles/styles'
 import { ImagePart, TextPart } from '../childrens/two-columns-repeater'
 
-export default function TwoColumnRepeater({ repeaterType, data: { title, repeater } }) {
+export default function TwoColumnRepeater({ repeaterType, data: { sectionTitle, repeater } }) {
     return (
         <Wrapper>
             <Container>
-                {title ?
-                    <Title>{title}</Title>
+                {sectionTitle ?
+                    <Title><StructuredText data={sectionTitle} /></Title>
                     : null
                 }
                 <div>
                     {repeater.map(el => (
                         <Item key={el.title} repeaterType={repeaterType}>
                             <ImagePart imgType={el.imgType} mainImg={el.img} additionalImg={el.additionalImage} />
-                            <TextPart repeaterType={repeaterType} linkText={el.linkText} linkUrl={el.linkUrl} text={el.textParagraph} title={el.title} />
+                            <TextPart repeaterType={repeaterType} linkText={el.linkText} linkUrl={el.linkUrl} text={el.textParagraph} blockTitle={el.blockTitle} />
                         </Item>
                     ))}
                 </div>
@@ -30,16 +31,16 @@ const Wrapper = styled.section`
     margin-bottom: -100px;
 `
 
-const Title = styled.h2`
-    margin: clamp(100px, 25vw, 160px) clamp(0px,7vw,100px) 100px clamp(0px,7vw,100px);
-    font-weight: 700;
-    font-size: clamp(32px, 6.4vw, 48px);
-    line-height: 100%;
-    text-align: center;
-    letter-spacing: -1px;
-    color: #203662;
-
-
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        margin: clamp(100px, 25vw, 160px) clamp(0px,7vw,100px) 100px clamp(0px,7vw,100px);
+        font-weight: 700;
+        font-size: clamp(32px, 6.4vw, 48px);
+        line-height: 100%;
+        text-align: center;
+        letter-spacing: -1px;
+        color: #203662;
+    }
 `
 
 const Item = styled.div`

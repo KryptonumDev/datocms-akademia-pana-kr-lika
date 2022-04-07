@@ -6,8 +6,8 @@ import Arrow from './../../../resources/arrow.svg'
 export default function TextTypeClassic({ text, title }) {
     return (
         <Wrapper className='textPart' >
-            <Title>{title} </Title>
-            <Text><StructuredText data={text} /></Text >
+            <Title><StructuredText data={title} /></Title>
+            <Text><StructuredText data={text} /></Text>
         </Wrapper>
     )
 }
@@ -23,12 +23,18 @@ const Wrapper = styled.div`
     }
 `
 
-const Title = styled.h2`
-    font-weight: 700;
-    font-size: clamp(32px, 6.4vw, 48px);
-    line-height: 100%; 
-    letter-spacing: -1px;
-    color: #203662;
+const Title = styled.div`
+    h2{
+        font-weight: 700;
+        font-size: clamp(32px, 6.4vw, 48px);
+        line-height: 100%; 
+        letter-spacing: -1px;
+        color: #203662;
+
+        @media (max-width: 340px) {
+            font-size: 28px;
+        }
+    }
 `
 
 const Text = styled.div`

@@ -51,7 +51,9 @@ export const query = graphql`
         gatsbyImageData(width: 1500)
       }
       otherPosts {
-        title
+        sectionTitle{
+          value
+        }
         linkUrl
         linkText
       }

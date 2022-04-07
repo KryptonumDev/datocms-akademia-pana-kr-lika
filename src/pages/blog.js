@@ -37,10 +37,14 @@ export const query = graphql`
               ...GatsbyDatoCmsSeoMetaTags
             }
           hero {
-            title
+            sectionTitle{
+                value
+              }
           }
           kontentStrony{
-              title
+             sectionTitle{
+                value
+              }
           }
         }
         allDatoCmsPost {

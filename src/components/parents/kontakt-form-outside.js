@@ -1,15 +1,16 @@
 import React from 'react'
+import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
 import { KontaktLeft, KontaktRight } from '../../resources/kontakt'
 import { Container } from '../../styles/styles'
 import KontaktForm from '../childrens/kontakt'
 
-export default function Kontakt({ data: { title, text } }) {
+export default function Kontakt({ data: { sectionTitle, text } }) {
     return (
         <Wrapper>
             <LocContainer>
-                <Title>{title}</Title>
-                <Text>{text}</Text>
+                <Title><StructuredText data={sectionTitle} /></Title>
+                <Text><StructuredText  data={text} /></Text>
                 <KontaktWrapper>
                     <KontaktLeft />
                     <KontaktRight />
@@ -41,29 +42,35 @@ const LocContainer = styled(Container)`
         padding:  0;
         margin-bottom: 0;
     }
+
 `
 
-const Title = styled.h2`
-    margin: 0 auto;
-    text-align: center;
-    max-width: 535px;
-    font-weight: 700;
-    font-size: clamp(32px, 6vw, 48px);
-    line-height: 100%;
-    letter-spacing: -1px;
-    color: #203662;
-    padding: 0 16px;
-`
-
-const Text = styled.p`
-    margin: 32px 0 100px 0;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;  
-    text-align: center;
-    color: #394C71;
-    @media (max-width: 640px){
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        margin: 0 auto;
+        text-align: center;
+        max-width: 535px;
+        font-weight: 700;
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 100%;
+        letter-spacing: -1px;
+        color: #203662;
         padding: 0 16px;
+    }
+`
+
+const Text = styled.div`
+    p{
+        margin: 32px auto 100px auto;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;  
+        text-align: center;
+        color: #394C71;
+        max-width: 480px;
+        @media (max-width: 640px){
+            padding: 0 16px;
+        }
     }
 `
 

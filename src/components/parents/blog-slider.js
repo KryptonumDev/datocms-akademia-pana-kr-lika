@@ -4,13 +4,14 @@ import styled from 'styled-components'
 import { Container, OutlinedLink } from '../../styles/styles'
 import { Link } from 'gatsby'
 import { DateParser } from '../../functions/datae-parser'
+import { StructuredText } from 'react-datocms'
 
-export default function Blog({ data: { title, linkText, linkUrl }, posts: { nodes: posts } }) {
+export default function Blog({ data: { sectionTitle, linkText, linkUrl }, posts: { nodes: posts } }) {
     return (
         <Wrapper>
             <Container>
                 <Flex>
-                    <Title>{title}</Title>
+                    <Title><StructuredText data={sectionTitle} /></Title>
                     <SLink to={linkUrl}>{linkText}</SLink>
                 </Flex>
                 <Grid>
@@ -19,7 +20,7 @@ export default function Blog({ data: { title, linkText, linkUrl }, posts: { node
                             <GridItem>
                                 <div className='category'>{el.category.name}</div>
                                 <div>
-                                    <Image image={el.coverImage.small} alt={el.coverImage.alt}/>
+                                    <Image image={el.coverImage.small} alt={el.coverImage.alt} />
                                     <h3>{el.title}</h3>
                                     <p>{el.shortText}</p>
                                 </div>
@@ -53,15 +54,17 @@ const Flex = styled.div`
     }
 `
 
-const Title = styled.h2`
-    font-weight: 700;
-    font-size: clamp(32px, 6.4vw, 48px);
-    line-height: 100%;
-    letter-spacing: -1px;
-    color: #203662;
-    
-    @media(max-width: 764px){
-        margin-bottom: 30px;
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 700;
+        font-size: clamp(32px, 6.4vw, 48px);
+        line-height: 100%;
+        letter-spacing: -1px;
+        color: #203662;
+        
+        @media(max-width: 764px){
+            margin-bottom: 30px;
+        }
     }
 `
 
@@ -76,6 +79,12 @@ const Grid = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
     margin-top: clamp(60px, 14.4vw, 100px);
+
+    a{
+        
+        border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+    }
 
     @media (max-width: 760px) {
         grid-template-columns: 1fr;

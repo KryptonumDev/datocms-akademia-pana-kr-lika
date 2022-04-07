@@ -9,7 +9,7 @@ export default function PolitykaContent({ data: { title, content } }) {
     return (
         <Wrapper>
             <LocContainer>
-                <Title>{title}</Title>
+                <Title data={title}/>
                 <Content>
                     <PolitykaLeft />
                     <PolitykaRight />
@@ -44,19 +44,21 @@ const LocContainer = styled(Container)`
 `
 
 
-const Title = styled.h1`
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 16px;
-    text-align: center;
-    font-weight: 700;
-    font-size: clamp(48px, 6vw, 64px);
-    line-height: 100%;
-    letter-spacing: -2px;
-    color: #203662;
+const Title = styled(StructuredText)`
+    h1{
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 16px;
+        text-align: center;
+        font-weight: 700;
+        font-size: clamp(48px, 6vw, 64px);
+        line-height: 100%;
+        letter-spacing: -2px;
+        color: #203662;
 
-    @media (max-width: 500px) {
-        letter-spacing: -1.5px;
+        @media (max-width: 500px) {
+            letter-spacing: -1.5px;
+        }
     }
 `
 

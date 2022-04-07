@@ -1,6 +1,7 @@
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
+import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
 import { Container } from '../../styles/styles'
 
@@ -8,7 +9,7 @@ export default function Bestsellers({ data: { title }, warsztaty }) {
     return (
         <Wrapper>
             <Container>
-                <Title>{title}</Title>
+                <Title><StructuredText data={title} /></Title>
                 <Grid>
                     {warsztaty.map(({ node: el }) => (
                         <Link key={el.slug} to={'/warsztaty/' + el.slug}>
@@ -27,16 +28,17 @@ export default function Bestsellers({ data: { title }, warsztaty }) {
 
 const Wrapper = styled.section`
     margin-top: clamp(100px, 25vw, 160px);
-
 `
 
-const Title = styled.h2`
-    font-weight: 700;
-    font-size: clamp(32px, 6vw, 48px);
-    line-height: 100%;
-    text-align: center;
-    letter-spacing: -1px;
-    color: #203662;
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 700;
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 100%;
+        text-align: center;
+        letter-spacing: -1px;
+        color: #203662;
+    }
 `
 
 const Grid = styled.div`
@@ -45,6 +47,10 @@ const Grid = styled.div`
     grid-column-gap: 18px;
     grid-row-gap: 48px;
     margin-top: 60px;   
+
+    a{
+        border-radius: 25px;
+    }
 
     @media (max-width: 960px) {
         grid-template-columns: 1fr 1fr;

@@ -33,8 +33,12 @@ export const query = graphql`
               ...GatsbyDatoCmsSeoMetaTags
             }
             kontaktForm {
-              title
-              text
+              sectionTitle{
+                value
+              }
+              text{
+                value
+              }
             }
           }
     }

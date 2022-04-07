@@ -28,8 +28,8 @@ const Wrapper = styled.div`
     .right{
         position: absolute;
         z-index: 3;
-        right: 42px;
-        top: 71px;
+        right: -15px;
+        top: 64px;
         transform-origin: 100% 0;
     }
 

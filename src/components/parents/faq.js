@@ -5,12 +5,13 @@ import styled from 'styled-components'
 import { Answer, Question, QuestionWrapper } from './../childrens/faq'
 import FaqArrow from './../../resources/faq.svg'
 import { TypeOneLeft, TypeOneRight } from '../../resources/type-one'
+import { StructuredText } from 'react-datocms'
 
-export default function Faq({ data: { img, questions, title } }) {
+export default function Faq({ data: { img, questions, sectionTitle } }) {
     return (
         <Wrapper>
             <Container>
-                <Title>{title}</Title>
+                <Title><StructuredText data={sectionTitle}/></Title>
                 <Flex>
                     <ImgContainer>
                         <TypeOneLeft />
@@ -42,15 +43,16 @@ const Wrapper = styled.div`
     margin-bottom: clamp(-160px, -25vw, -100px);
 `
 
-const Title = styled.h2`
-    font-weight: 700;
-    font-size: clamp(32px, 6vw, 48px);
-    line-height: 100%;
-    text-align: center;
-    letter-spacing: -1px;
-    color: #203662;
-    margin-bottom: clamp(50px, 12vw, 100px);
-
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 700;
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 100%;
+        text-align: center;
+        letter-spacing: -1px;
+        color: #203662;
+        margin-bottom: clamp(50px, 12vw, 100px);
+    }
 `
 
 const Flex = styled.div`

@@ -180,6 +180,15 @@ const Social = styled.ul`
     margin: 0 auto;
     position: relative;
 
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
+
     li{
         margin-left: 40px;
 
@@ -214,6 +223,7 @@ const Authors = styled.div`
 
         a{
             color: #394C71;
+            border-radius: 8px;
 
         }
     }

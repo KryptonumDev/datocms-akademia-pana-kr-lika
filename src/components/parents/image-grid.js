@@ -1,14 +1,15 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
+import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
 import { ImageGridBottom, ImageGridLeft, ImageGridRight } from '../../resources/image-grid'
 import { Container } from '../../styles/styles'
 
-export default function ImageGrid({ data: { images, title } }) {
+export default function ImageGrid({ data: { images, sectionTitle } }) {
     return (
         <Wrapper>
             <LocContainer>
-                <Title>{title}</Title>
+                <Title><StructuredText data={sectionTitle} /></Title>
                 <GridWrapper>
                     <ImageGridBottom />
                     <ImageGridLeft />
@@ -157,12 +158,14 @@ const Image = styled(GatsbyImage)`
 
 `
 
-const Title = styled.h2`
-    margin-bottom: clamp(80px, 16vw, 120px);
-    font-weight: 700;
-    font-size: clamp(32px, 6vw, 48px);
-    line-height: 100%;
-    text-align: center;
-    letter-spacing: -1px;
-    color: #203662;
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        margin-bottom: clamp(80px, 16vw, 120px);
+        font-weight: 700;
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 100%;
+        text-align: center;
+        letter-spacing: -1px;
+        color: #203662;
+    }
 `

@@ -152,6 +152,10 @@ const PostsGrid = styled.div`
     grid-row-gap: 48px;
     margin-top: 56px;
 
+    a{
+        border-radius: 25px;
+    }
+
     @media (max-width: 1023px){
         margin-top: 32px;
     }

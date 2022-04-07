@@ -4,18 +4,18 @@ import styled from 'styled-components'
 import { AboutHeroBackgroundLeft, AboutHeroBackgroundRight, AboutHeroRightTop, AboutHeroRightBottom, AboutHeroLeft } from '../../resources/about-hero'
 import { Container } from '../../styles/styles'
 
-export default function Hero({ data: { title, subTitle, subText } }) {
+export default function Hero({ data: { pageTitle, sectionTitle, subText } }) {
     return (
         <Wrapper>
             <AboutHeroBackgroundLeft />
             <AboutHeroBackgroundRight />
             <LocContainer>
-                <Title>{title}</Title>
+                <Title><StructuredText data={pageTitle} /></Title>
                 <Content>
                     <AboutHeroRightTop />
                     <AboutHeroRightBottom />
                     <AboutHeroLeft />
-                    <h2>{subTitle}</h2>
+                    <StructuredText data={sectionTitle} />
                     <StructuredText data={subText} />
                 </Content>
             </LocContainer>
@@ -90,13 +90,15 @@ const LocContainer = styled(Container)`
     }
 `
 
-const Title = styled.h1`
-    font-weight: 700;
-    font-size: clamp(48px, 4.8vw, 64px);
-    line-height: 100%;
-    text-align: center;
-    letter-spacing: -2px;
-    color: #203662;
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 700;
+        font-size: clamp(48px, 4.8vw, 64px);
+        line-height: 100%;
+        text-align: center;
+        letter-spacing: -2px;
+        color: #203662;
+    }
 `
 
 const Content = styled.div`
@@ -108,7 +110,7 @@ const Content = styled.div`
     border: 1px solid #F3F5F8;
     background-color: #fff;
 
-    h2{
+    h1,h2,h3,h4,h5,h6{
         margin-bottom: 32px;
         font-weight: 700;
         font-size: clamp(24px, 4.8vw, 36px);

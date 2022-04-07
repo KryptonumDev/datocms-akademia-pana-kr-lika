@@ -39,7 +39,9 @@ export const query = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       heroSection {
-        title
+        pageTitle{
+          value
+        }
         linkText
         linkSlug
         img {
@@ -48,7 +50,9 @@ export const query = graphql`
         }
       }
       repeater {
-        title
+        sectionTitle{
+          value
+        }
         repeater {
           ... on DatoCmsRepeaterTwoColumnWithButton {
             imgType
@@ -60,7 +64,9 @@ export const query = graphql`
               alt
               gatsbyImageData
             }
-            title
+            blockTitle{
+              value
+            }
             textParagraph{
               value
             }
@@ -70,19 +76,29 @@ export const query = graphql`
         }
       }
       opinje {
-        title
+        sectionTitle{
+          value
+        }
         opinji {
           img {
             alt
             gatsbyImageData
           }
-          recenzja
-          autor
-          place
+          recenzja{
+            value
+          }
+          autor{
+            value
+          }
+          place{
+            value
+          }
         }
       }
       blog {
-        title
+        sectionTitle{
+          value
+        }
         linkText
         linkUrl
       }

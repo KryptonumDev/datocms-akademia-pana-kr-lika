@@ -3,12 +3,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { Container, StyledLink } from '../../styles/styles'
 import { HeroMainPageLeft, HeroMainPageRight } from '../../resources/hero-main-page'
+import { StructuredText } from 'react-datocms'
 
-export default function Hero({ data: { title, linkText, linkSlug, img } }) {
+export default function Hero({ data: { pageTitle, linkText, linkSlug, img } }) {
     return (
         <Wrapper>
             <LocContainer>
-                <Title>{title}</Title>
+                <Title><StructuredText data={pageTitle} /></Title>
                 <LocLink to={linkSlug}>{linkText}</LocLink>
                 <ImageContainer>
                     <HeroMainPageLeft />
@@ -45,18 +46,20 @@ const LocContainer = styled(Container)`
     }
 `
 
-const Title = styled.h1`
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    font-weight: 700;
-    font-size: clamp(36px, 6vw, 64px);
-    line-height: 100%;
-    letter-spacing: -2px;
-    color: #203662;
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        font-weight: 700;
+        font-size: clamp(36px, 6vw, 64px);
+        line-height: 100%;
+        letter-spacing: -2px;
+        color: #203662;
 
-    @media (max-width: 500px) {
-        letter-spacing: -1.5px;
+        @media (max-width: 500px) {
+            letter-spacing: -1.5px;
+        }
     }
 `
 

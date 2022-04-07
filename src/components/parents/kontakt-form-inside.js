@@ -1,4 +1,5 @@
 import React from 'react'
+import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
 import { KontaktImage, KontaktLeft, KontaktRight } from '../../resources/kontakt'
 import { Container } from '../../styles/styles'
@@ -8,8 +9,8 @@ export default function Kontakt({ data: { title, text } }) {
     return (
         <Wrapper>
             <LocContainer>
-                <Title>{title}</Title>
-                <Text>{text}</Text>
+                <Title data={{ title }} />
+                <Text data={text} />
                 <Flex>
                     <ImageWrapper>
                         <KontaktImage />
@@ -61,27 +62,31 @@ const LocContainer = styled(Container)`
     }
 `
 
-const Title = styled.h2`
-    margin: 0 auto;
-    text-align: center;
-    max-width: 535px;
-    font-weight: 700;
-    font-size: clamp(32px, 6vw, 48px);
-    line-height: 100%;
-    letter-spacing: -1px;
-    color: #203662;
-    padding: 0 16px;
+const Title = styled(StructuredText)`
+    h2{
+        margin: 0 auto;
+        text-align: center;
+        max-width: 535px;
+        font-weight: 700;
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 100%;
+        letter-spacing: -1px;
+        color: #203662;
+        padding: 0 16px;
+    }
 `
 
-const Text = styled.p`
-    margin: 32px 0 100px 0;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;  
-    text-align: center;
-    color: #394C71;
-    @media (max-width: 640px){
-        padding: 0 16px;
+const Text = styled(StructuredText)`
+    p{
+        margin: 32px 0 100px 0;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;  
+        text-align: center;
+        color: #394C71;
+        @media (max-width: 640px){
+            padding: 0 16px;
+        }
     }
 `
 

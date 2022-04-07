@@ -50,6 +50,10 @@ export default function Header({ data: { logo, menu } }) {
 const ImageWrapper = styled.div`
     max-height: 53px;
 
+    a{
+        border-radius: 25px;
+    }
+
     @media(max-width: 1100px){
         display: flex;
         justify-content: space-between;
