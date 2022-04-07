@@ -9,7 +9,7 @@ export default function PolitykaContent({ data: { title, content } }) {
     return (
         <Wrapper>
             <LocContainer>
-                <Title data={title}/>
+                <Title>{title}</Title>
                 <Content>
                     <PolitykaLeft />
                     <PolitykaRight />
@@ -41,11 +41,14 @@ const Wrapper = styled.div`
 
 const LocContainer = styled(Container)`
     overflow: unset;
+
+    @media (max-width: 500px) {
+        padding: 0;
+    }
 `
 
 
-const Title = styled(StructuredText)`
-    h1{
+const Title = styled.h1`
         max-width: 800px;
         margin: 0 auto;
         padding: 0 16px;
@@ -59,7 +62,6 @@ const Title = styled(StructuredText)`
         @media (max-width: 500px) {
             letter-spacing: -1.5px;
         }
-    }
 `
 
 const Content = styled.div`

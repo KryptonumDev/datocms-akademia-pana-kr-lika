@@ -11,8 +11,7 @@ export default function Hero({ data: { hero, post } }) {
         <Wrapper>
             <Container>
                 <Flex>
-                    
-                    <Title data={hero.title}/>
+                    <Title><StructuredText data={hero.sectionTitle} /></Title>
                     {/* <input placeholder="Szukaj" /> */}
                 </Flex>
                 <Content>
@@ -79,8 +78,8 @@ const Flex = styled.div`
     }
 `
 
-const Title = styled(StructuredText)`
-    h1{
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
         font-weight: 700;
         font-size: clamp(36px, 4.8vw, 64px);
         line-height: 100%;
@@ -176,6 +175,7 @@ const PostCard = styled(Link)`
         width: 100%;
         border-top-left-radius: unset;
         border-top-right-radius: unset;
+        min-width: unset;
 
         .new{
             position: absolute;

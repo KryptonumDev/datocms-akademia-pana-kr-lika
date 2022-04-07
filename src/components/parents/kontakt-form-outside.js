@@ -22,7 +22,7 @@ export default function Kontakt({ data: { sectionTitle, text } }) {
 }
 
 const Wrapper = styled.section`
-    margin-top: clamp(100px, 25vw, 160px);
+    margin-top: clamp(130px, 25vw, 160px);
     padding: 130px 0 160px;
     background-color: #F5FFF2;
 

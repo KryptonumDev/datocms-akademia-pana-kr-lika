@@ -1,6 +1,7 @@
 import React from 'react'
 import { StructuredText } from 'react-datocms'
 import styled, { css } from 'styled-components'
+import { TEXT_TYPES } from '../../constants/types'
 import { Container } from '../../styles/styles'
 import { ImagePart, TextPart } from '../childrens/two-columns-repeater'
 
@@ -8,15 +9,13 @@ export default function TwoColumnRepeater({ repeaterType, data: { sectionTitle, 
     return (
         <Wrapper>
             <Container>
-                {sectionTitle ?
-                    <Title><StructuredText data={sectionTitle} /></Title>
-                    : null
-                }
+
+                <Title><StructuredText data={sectionTitle} /></Title>
                 <div>
                     {repeater.map(el => (
-                        <Item key={el.title} repeaterType={repeaterType}>
+                        <Item key={el.title} repeaterType={repeaterType} textType={el.textType}>
                             <ImagePart imgType={el.imgType} mainImg={el.img} additionalImg={el.additionalImage} />
-                            <TextPart repeaterType={repeaterType} linkText={el.linkText} linkUrl={el.linkUrl} text={el.textParagraph} blockTitle={el.blockTitle} />
+                            <TextPart repeaterType={repeaterType} linkText={el.linkText} linkUrl={el.linkUrl} text={el.textParagraph} blockTitle={el.blockTitle} textType={el.textType}/>
                         </Item>
                     ))}
                 </div>
@@ -66,9 +65,15 @@ const Item = styled.div`
     }
 
     @media(max-width: 1023px){
+        .textPart{
+            margin-top: 50px;
+        }
+        flex-direction: column;
+        max-width: 630px;
+        margin: clamp(100px, 25vw, 160px) auto 0;
         :nth-child(n){
             flex-direction: column;
-            margin: 0 clamp(0px,7vw,100px);
+            margin-top: clamp(100px, 25vw, 160px);
 
             .imgPart{
                 margin: 0;
@@ -77,9 +82,14 @@ const Item = styled.div`
     }
 
     @media(max-width: 764px){
+        .textPart{
+            margin-top: 80px;
+        }
+
         :nth-child(n){
             max-width: unset;
             margin: 0 ;
+            margin-top: 60px;
         }
 
     }
@@ -257,6 +267,22 @@ const Item = styled.div`
     `}
 
     ${({ repeaterType }) => repeaterType === 'list' && css`
+
+    .textPart{
+        ul{
+            grid-template-columns: ${props => props.textType === TEXT_TYPES.DOUBLED ? '1fr 1fr' : '1fr'};
+            grid-column-gap: 8px;
+
+            @media (max-width: 500px) {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    .imgPart{
+        flex: ${props => props.textType === TEXT_TYPES.DOUBLED ? 'unset' : '50% 0 0'}
+    }
+
     :nth-child(2n - 1){
         flex-direction: row-reverse;
         .imgPart{

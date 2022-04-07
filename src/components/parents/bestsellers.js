@@ -45,8 +45,7 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 18px;
-    grid-row-gap: 48px;
-    margin-top: 60px;   
+    grid-row-gap: 48px; 
 
     a{
         border-radius: 25px;

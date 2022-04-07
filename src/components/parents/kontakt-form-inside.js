@@ -9,8 +9,8 @@ export default function Kontakt({ data: { title, text } }) {
     return (
         <Wrapper>
             <LocContainer>
-                <Title data={{ title }} />
-                <Text data={text} />
+                <Title><StructuredText data={title} /></Title>
+                <Text><StructuredText data={text} /></Text>
                 <Flex>
                     <ImageWrapper>
                         <KontaktImage />
@@ -62,8 +62,8 @@ const LocContainer = styled(Container)`
     }
 `
 
-const Title = styled(StructuredText)`
-    h2{
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
         margin: 0 auto;
         text-align: center;
         max-width: 535px;
@@ -76,7 +76,7 @@ const Title = styled(StructuredText)`
     }
 `
 
-const Text = styled(StructuredText)`
+const Text = styled.div`
     p{
         margin: 32px 0 100px 0;
         font-weight: 500;

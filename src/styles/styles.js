@@ -40,6 +40,10 @@ export const StyledLink = styled(Link)`
     &:disabled{
         background-color: #DB2777;
     }
+
+    @media(max-width: 360px){  
+        font-size: 14px;
+    }
 `
 
 export const OutlinedLink = styled(Link)`

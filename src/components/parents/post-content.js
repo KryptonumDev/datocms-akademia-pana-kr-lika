@@ -11,8 +11,8 @@ export default function Content({ data: { category, content, shortText, title, s
         <Wrapper>
             <Container>
                 <Category>{category.name}</Category>
-                <Title data={title} />
-                <SubTitle data={shortText}/>
+                <Title >{title}</Title>
+                <SubTitle >{shortText}</SubTitle>
                 <ImageWrapper>
                     <PostLeft />
                     <PostRight />
@@ -57,8 +57,7 @@ const Category = styled.span`
     margin: 0 auto;
 `
 
-const Title = styled(StructuredText)`
-    h1{
+const Title = styled.h1`
         font-weight: 700;
         font-size: 64px;
         line-height: 100%;
@@ -66,18 +65,15 @@ const Title = styled(StructuredText)`
         letter-spacing: -2px;
         color: #203662;
         margin: 32px;
-    }
 `
 
-const SubTitle = styled(StructuredText)`
-    p{
+const SubTitle = styled.p`
         font-weight: 500;
         font-size: 18px;
         line-height: 150%;
         text-align: center;
         color: #394C71;
         margin-bottom: 80px;
-    }
 `
 
 const ImageWrapper = styled.div`

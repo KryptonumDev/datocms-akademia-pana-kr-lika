@@ -187,6 +187,16 @@ const Social = styled.ul`
         width: 32px;
         height: 32px;
         border-radius: 50%;
+        transition: background-color .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+        &:hover{
+            background-color: rgba(18, 17, 39, 0.08);
+        }
+
+        &:focus{
+            background-color: rgba(18, 17, 39, 0.08);
+            border-color: rgba(18, 17, 39, 0.08);
+        }
     }
 
     li{

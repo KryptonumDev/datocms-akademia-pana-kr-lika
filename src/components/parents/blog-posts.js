@@ -5,8 +5,9 @@ import styled from 'styled-components'
 import { DateParser } from "../../functions/datae-parser"
 import { Container, OutlinedLink, StyledLink } from "../../styles/styles"
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { StructuredText } from "react-datocms"
 
-export default function BlogPosts({ data: { categories, posts, content: { title } } }) {
+export default function BlogPosts({ data: { categories, posts, content: { sectionTitle } } }) {
 
     const [showCount, changeShowCount] = useState(4)
 
@@ -35,7 +36,7 @@ export default function BlogPosts({ data: { categories, posts, content: { title 
                     <Wrapper>
                         <Container>
                             <Flex>
-                                <Title>{title}</Title>
+                                <Title><StructuredText data={sectionTitle}/></Title>
                                 <Categories>
                                     <Button className="buttonFilter" id='all' onClick={() => { changeFilter('all') }} as='button'>Wszystkie wpisy</Button>
                                     {categories.map(el => (
@@ -108,14 +109,15 @@ const Flex = styled.div`
     }
 `
 
-const Title = styled.h2`
-    font-weight: 700;
-    font-size: clamp(32px, 6vw, 48px);
-    line-height: 100%;
-    letter-spacing: -1px;
-    color: #203662;
-    min-width: fit-content;
-
+const Title = styled.div`
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 700;
+        font-size: clamp(32px, 6vw, 48px);
+        line-height: 100%;
+        letter-spacing: -1px;
+        color: #203662;
+        min-width: fit-content;
+    }
 `
 
 const Categories = styled.div`
