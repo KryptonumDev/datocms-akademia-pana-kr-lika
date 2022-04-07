@@ -41,6 +41,10 @@ const Wrapper = styled.div`
 
 const LocContainer = styled(Container)`
     overflow: unset;
+
+    @media (max-width: 500px) {
+        padding: 0;
+    }
 `
 
 

@@ -3,7 +3,7 @@ import { StructuredText } from 'react-datocms'
 import styled from 'styled-components'
 import Arrow from './../../../resources/arrow.svg'
 
-export default function TextTypeClassic({ text, title }) {
+export default function TextTypeList({ text, title, textType }) {
     return (
         <Wrapper className='textPart' >
             <Title><StructuredText data={title} /></Title>

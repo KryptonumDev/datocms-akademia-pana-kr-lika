@@ -175,6 +175,7 @@ const PostCard = styled(Link)`
         width: 100%;
         border-top-left-radius: unset;
         border-top-right-radius: unset;
+        min-width: unset;
 
         .new{
             position: absolute;

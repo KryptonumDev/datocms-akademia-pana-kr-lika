@@ -8,6 +8,7 @@ import TextTypeClassic from './text-type-classic'
 import ImageTypeFive from './image-type-five'
 import ImageTypeFour from './image-type-four'
 import ImageTypeThree from './image-type-three'
+import TextTypeList from './text-type-list'
 
 export const ImagePart = ({ imgType, mainImg, additionalImg }) => {
     switch (imgType) {
@@ -29,7 +30,7 @@ export const ImagePart = ({ imgType, mainImg, additionalImg }) => {
     }
 }
 
-export const TextPart = ({ repeaterType, linkText, linkUrl, text, blockTitle }) => {
+export const TextPart = ({ repeaterType, linkText, linkUrl, text, blockTitle, textType }) => {
     switch (repeaterType) {
         case REPEATER_TYPES.BUTTON:
             return <TextTypeButton linkText={linkText} linkUrl={linkUrl} text={text} title={blockTitle} />
@@ -38,7 +39,7 @@ export const TextPart = ({ repeaterType, linkText, linkUrl, text, blockTitle }) 
         case REPEATER_TYPES.SOLO:
             return <TextTypeClassic text={text} title={blockTitle} />
         case REPEATER_TYPES.LIST:
-            return <TextTypeClassic text={text} title={blockTitle} />
+            return <TextTypeList textType={textType} text={text} title={blockTitle} />
         default:
             return null
     }

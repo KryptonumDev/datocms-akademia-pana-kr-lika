@@ -63,7 +63,7 @@ export const query = graphql`
                     value
                   }
                 repeater {
-                    ... on DatoCmsRepeaterTwoColumn {
+                    ... on DatoCmsRepeaterTwoColumnWithList {
                         id
                         blockTitle{
                             value
@@ -71,6 +71,7 @@ export const query = graphql`
                         textParagraph {
                             value
                         }
+                        textType
                         imgType
                         img {
                             gatsbyImageData

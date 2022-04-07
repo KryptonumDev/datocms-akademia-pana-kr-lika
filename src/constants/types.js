@@ -24,3 +24,8 @@ export const NAVIGATION = {
     CLASSICK: 'DatoCmsRepeaterNavigationClassick',
     MEGA: "DatoCmsRepeaterNavigationMegaMenu"
 }
+
+export const TEXT_TYPES = {
+    CLASSICK: 'zwykly',
+    DOUBLED: 'podwojny'
+}
