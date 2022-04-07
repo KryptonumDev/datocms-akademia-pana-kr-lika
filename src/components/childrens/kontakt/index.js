@@ -125,7 +125,7 @@ export default function KontaktForm({ data }) {
                         animate={{ opacity: 1, bottom: 0 }}
                         exit={{ opacity: 1, bottom: -6 }}
                         transition={{ type: 'spring', duration: 0.4 }}>
-                        Wiadomość domyślnie wysłana!
+                        Wiadomość pomyślnie wysłana!
                     </motion.p>
                     : null}
                 {isSended === 'error'
@@ -133,7 +133,8 @@ export default function KontaktForm({ data }) {
                         initial={{ opacity: 0, bottom: -6 }}
                         animate={{ opacity: 1, bottom: 0 }}
                         exit={{ opacity: 1, bottom: -6 }}
-                        transition={{ type: 'spring', duration: 0.4 }}>
+                        transition={{ type: 'spring', duration: 0.4 }}
+                        className='error'>
                         Wiadomość nie wysłana, sprobuj póżniej!
                     </motion.p>
                     : null}
@@ -264,12 +265,24 @@ const TextArea = styled.textarea`
 const ButtonAndAnswer = styled.div`
     position: relative;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     margin-top: 32px;
     button{
         margin-right: 16px;
     }
     p{
         right: 0;
+        &.error{
+            color: #EF4444;
+        }
     }
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+
+        button{
+            width: 100%;
+        }
+    }
+    
 `

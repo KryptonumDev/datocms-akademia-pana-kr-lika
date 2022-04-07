@@ -65,12 +65,12 @@ const Wrapper = styled.div`
         transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1), opacity .25s linear !important;
     }
 
-    :hover{
+    /* :hover{
         img{
             transform-origin: 50% 50%;
             transform: scale(1.04);
         }
-    }
+    } */
 `
 
 const MainImage = styled(GatsbyImage)`
