@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Function from './function'
 import Controls from './controls'
 import Track from './track'

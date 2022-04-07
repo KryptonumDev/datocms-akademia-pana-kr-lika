@@ -271,7 +271,6 @@ const ButtonAndAnswer = styled.div`
         margin-right: 16px;
     }
     p{
-        right: 0;
         &.error{
             color: #EF4444;
         }
@@ -279,8 +278,17 @@ const ButtonAndAnswer = styled.div`
 
     @media (max-width: 500px) {
         flex-direction: column;
+        padding-bottom: 32px;
+
+        p{
+            position: absolute;
+            text-align: center;
+            left: 0;
+            right: 0;
+        }
 
         button{
+            margin-right: 0;
             width: 100%;
         }
     }

@@ -6,6 +6,7 @@ import { DateParser } from "../../functions/datae-parser"
 import { Container, OutlinedLink, StyledLink } from "../../styles/styles"
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { StructuredText } from "react-datocms"
+import { Arrow } from "../../resources/arrow"
 
 export default function BlogPosts({ data: { categories, posts, content: { sectionTitle } } }) {
 
@@ -36,7 +37,7 @@ export default function BlogPosts({ data: { categories, posts, content: { sectio
                     <Wrapper>
                         <Container>
                             <Flex>
-                                <Title><StructuredText data={sectionTitle}/></Title>
+                                <Title><StructuredText data={sectionTitle} /></Title>
                                 <Categories>
                                     <Button className="buttonFilter" id='all' onClick={() => { changeFilter('all') }} as='button'>Wszystkie wpisy</Button>
                                     {categories.map(el => (
@@ -65,7 +66,7 @@ export default function BlogPosts({ data: { categories, posts, content: { sectio
                                                                 </div>
                                                                 <div className="flex">
                                                                     <span className="next">
-                                                                        {'Czytaj dalej ->'}
+                                                                        Czytaj dalej<Arrow />
                                                                     </span>
                                                                     <span className="date">
                                                                         {DateParser(el.date)}
@@ -169,6 +170,23 @@ const PostsGrid = styled.div`
     }
 `
 
+const Image = styled(GatsbyImage)`
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+
+    height: 340px;
+
+    img{
+        transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1), opacity .25s linear !important;
+        transform-origin: 50% 50%;
+
+    }
+
+    @media (max-width: 500px) {  
+        height: 259px;
+    }
+`
+
 const Post = styled(motion.div)`
     border: 1px solid #F3F5F8;
     box-sizing: border-box;
@@ -208,6 +226,12 @@ const Post = styled(motion.div)`
             font-size: 16px;
             line-height: 170%;
             color: #DB2777;
+            display: flex;
+            align-items: center;
+            svg{
+                margin-left: 8px;
+                transition: transform .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+            }
 
         }
 
@@ -235,6 +259,23 @@ const Post = styled(motion.div)`
         z-index: 3;
     }
 
+    &:hover{
+
+        ${Image}{
+            img{
+                transform: scale(1.04);
+            }
+        }
+
+        .flex{
+            .next{
+                svg{
+                    transform: translateX(10px);
+                }
+            }
+        }
+    }
+
     @media (max-width: 500px) {
         h3{
             padding: 16px 16px 8px 16px;
@@ -248,17 +289,6 @@ const Post = styled(motion.div)`
     }
 
 
-`
-
-const Image = styled(GatsbyImage)`
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-
-    height: 340px;
-
-    @media (max-width: 500px) {  
-        height: 259px;
-    }
 `
 
 const ShowMore = styled(StyledLink)`

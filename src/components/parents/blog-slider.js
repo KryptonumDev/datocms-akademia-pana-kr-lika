@@ -5,6 +5,7 @@ import { Container, OutlinedLink } from '../../styles/styles'
 import { Link } from 'gatsby'
 import { DateParser } from '../../functions/datae-parser'
 import { StructuredText } from 'react-datocms'
+import { Arrow } from '../../resources/arrow'
 
 export default function Blog({ data: { sectionTitle, linkText, linkUrl }, posts: { nodes: posts } }) {
     return (
@@ -26,7 +27,7 @@ export default function Blog({ data: { sectionTitle, linkText, linkUrl }, posts:
                                 </div>
                                 <div className="flex">
                                     <span className="next">
-                                        {'Czytaj dalej ->'}
+                                        Czytaj dalej <Arrow/>
                                     </span>
                                     <span className="date">
                                         {DateParser(el.date)}
@@ -94,6 +95,22 @@ const Grid = styled.div`
     }
 `
 
+const Image = styled(GatsbyImage)`
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    height: 340px;
+    width: 100%;
+
+    img{
+        transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1), opacity .25s linear !important;
+        transform-origin: 50% 50%;
+
+    }
+    @media (max-width: 500px) {  
+        height: 259px;
+    }
+`
+
 const GridItem = styled.div`
     border: 1px solid #F3F5F8;
     box-sizing: border-box;
@@ -149,7 +166,12 @@ const GridItem = styled.div`
             font-size: 16px;
             line-height: 170%;
             color: #DB2777;
-
+            display: flex;
+            align-items: center;
+            svg{
+                margin-left: 8px;
+                transition: transform .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+            }
         }
 
         .date{
@@ -158,6 +180,23 @@ const GridItem = styled.div`
             line-height: 150%;
             color: #394C71;
 
+        }
+    }
+
+    &:hover{
+
+        ${Image}{
+            img{
+                transform: scale(1.04);
+            }
+        }
+
+        .flex{
+            .next{
+                svg{
+                    transform: translateX(10px);
+                }
+            }
         }
     }
 
@@ -171,14 +210,5 @@ const GridItem = styled.div`
         .flex{
             padding: 48px 16px 16px 16px;
         }
-    }
-`
-
-const Image = styled(GatsbyImage)`
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    height: 340px;
-    @media (max-width: 500px) {  
-        height: 259px;
     }
 `

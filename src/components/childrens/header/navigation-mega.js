@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import React, { useState } from "react"
 import styled from "styled-components"
 import OpenArrow from './../../../resources/faq.svg'
-import { Arrow } from "../../../resources/svg"
+import { Arrow } from "../../../resources/arrow"
 
 export default function NavigationItemMega({ changeIsOpenedOuter, data: { slug, title, menuItem } }) {
 

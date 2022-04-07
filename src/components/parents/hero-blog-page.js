@@ -4,6 +4,7 @@ import React from "react"
 import { StructuredText } from "react-datocms"
 import styled from 'styled-components'
 import { DateParser } from "../../functions/datae-parser"
+import { Arrow } from "../../resources/arrow"
 import { Container } from "../../styles/styles"
 
 export default function Hero({ data: { hero, post } }) {
@@ -26,7 +27,7 @@ export default function Hero({ data: { hero, post } }) {
                         <p>{post.shortText}</p>
                         <div className="flex">
                             <span className="next">
-                                {'Czytaj dalej ->'}
+                                Czytaj dalej<Arrow />
                             </span>
                             <span className="date">
                                 {DateParser(post.date)}
@@ -89,22 +90,14 @@ const Title = styled.div`
     }
 `
 
-const Content = styled.div`
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 125%;
-    margin-top: 50px;
-
-    a{
-        border-radius: 25px;
-    }
+const Image = styled(GatsbyImage)`
+    width: 100%;
+    border-radius: 25px;
 
     @media (max-width: 760px) {
-        flex-direction: column;
         width: 100%;
-        max-width: 500px;
-        margin: 50px auto 0;
+        border-bottom-left-radius: unset;
+        border-bottom-right-radius: unset;
     }
 `
 
@@ -158,6 +151,12 @@ const PostCard = styled(Link)`
             font-size: 16px;
             line-height: 170%;
             color: #DB2777;
+            display: flex;
+            align-items: center;
+            svg{
+                margin-left: 8px;
+                transition: transform .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+            }
 
         }
 
@@ -168,8 +167,21 @@ const PostCard = styled(Link)`
             color: #394C71;
 
         }
+    }     
+    
+    @media (min-width: 601px) {
+        &:hover{
+            .flex{
+                .next{
+                    svg{
+                        transform: translateX(10px);
+                    }
+                }
+            }
+        }
     }
 
+    
     @media (max-width: 760px) {
         transform: unset;
         width: 100%;
@@ -193,13 +205,42 @@ const PostCard = styled(Link)`
     }
 `
 
-const Image = styled(GatsbyImage)`
-    width: 100%;
-    border-radius: 25px;
+const Content = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 125%;
+    margin-top: 50px;
+
+    a{
+        border-radius: 25px;
+    }
+
+    
+
 
     @media (max-width: 760px) {
+        flex-direction: column;
         width: 100%;
-        border-bottom-left-radius: unset;
-        border-bottom-right-radius: unset;
+        max-width: 500px;
+        margin: 50px auto 0;
+    }
+
+    @media (max-width: 600px) {
+        
+        &:hover{
+            ${Image}{
+                img{
+                    scale: 1.04;
+                }
+            }
+            .flex{
+                .next{
+                    svg{
+                        transform: translateX(10px);
+                    }
+                }
+            }
+        }
     }
 `
