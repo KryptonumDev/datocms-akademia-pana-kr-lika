@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import OpenArrow from './../../../resources/faq.svg'
 import { Arrow } from "../../../resources/arrow"
@@ -14,9 +14,32 @@ export default function NavigationItemMega({ changeIsOpenedOuter, data: { slug, 
         changeIsOpenedOuter(false)
     }
 
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            document.addEventListener('keydown', (event) => {   
+                if(event.key === 'Escape'){
+                    changeIsOpened(false)
+                    changeIsOpenedOuter(false)
+                }
+            })
+
+            document.getElementById('last-tab').addEventListener('keydown', (event) => {
+                if(event.key === 'Tab'){
+                    changeIsOpened(false)
+                }
+            })
+
+            document.getElementById('first-tab').addEventListener('keydown', (event) => {
+                if(event.key === 'Tab'){
+                    changeIsOpened(true)
+                }
+            })
+        }
+    }, [])
+
     return (
         <React.Fragment key={title}>
-            <StyledLink onClick={() => { changeIsOpened(!isOpened) }}>
+            <StyledLink id='first-tab' onClick={() => { changeIsOpened(!isOpened) }}>
                 {title}<img alt="strzałeczka dekoracyjna" src={OpenArrow} />
             </StyledLink>
             <CloseOut isOpened={isOpened} onClick={() => { changeIsOpened(!isOpened) }} />
@@ -31,7 +54,7 @@ export default function NavigationItemMega({ changeIsOpenedOuter, data: { slug, 
                         </li>
                     ))}
                 </ul>
-                <Link tabIndex={isOpened ? '0' : '-1'} onClick={() => { Close() }} className="offerLink" to={'/' + slug}>Zobacz pełną ofertę <Arrow /></Link>
+                <Link id='last-tab' tabIndex={isOpened ? '0' : '-1'} onClick={() => { Close() }} className="offerLink" to={'/' + slug}>Zobacz pełną ofertę <Arrow /></Link>
             </MegaMeni>
         </React.Fragment>
     )
@@ -74,7 +97,8 @@ const StyledLink = styled.button`
     }
 
     @media (max-width: 1100px) {
-        padding: 0;
+        padding: 0 8px;
+        margin: 0 -8px;
     }
 `
 
@@ -124,6 +148,12 @@ const MegaMeni = styled.div`
             padding: 16px;
             text-align: left;
             position: relative;
+            transition: background-color .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+            border-radius: 25px;
+
+            &:hover{
+                background-color: rgba(18, 17, 39, 0.04);
+            }
 
             a{
                 position: absolute;
@@ -169,8 +199,17 @@ const MegaMeni = styled.div`
         color: #DB2777;
         display: flex;
         align-items: center;
+        padding: 0 8px;
+
         svg{
+            transition: transform .2s cubic-bezier(0.215, 0.610, 0.355, 1);
             margin-left: 10px;
+        }
+
+        &:hover{
+            svg{
+                transform: translateX(8px);
+            }
         }
     }
 
@@ -192,17 +231,22 @@ const MegaMeni = styled.div`
 
         .ul{
             grid-template-columns: 1fr 1fr;
-            padding: 0;
+            padding: 0 12px;
             margin-top: 32px;
 
             li{
                 max-width: 320px;
                 padding: 0;
+
+                a{
+                    padding: 8px;
+                    margin: -8px;
+                }
             }
         }
 
         .offerLink{
-            margin: unset;
+            margin: 0 4px;
         }
     }
 

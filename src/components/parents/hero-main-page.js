@@ -73,7 +73,7 @@ const LocLink = styled(StyledLink)`
 
 const Image = styled(GatsbyImage)`
     border-radius: clamp(25px, 6vw, 50px);
-    img{
+    /* img{
         transition: transform .3s cubic-bezier(0.39, 0.575, 0.565, 1), opacity .25s linear !important;
     }
 
@@ -82,7 +82,7 @@ const Image = styled(GatsbyImage)`
             transform-origin: 50% 50%;
             transform: scale(1.03);
         }
-    }
+    } */
 `
 
 const ImageContainer = styled.div`

@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 export default function NavigationItemClassick({ data, changeIsOpened }) {
     return (
-        <StyledLink key={data.name} onClick={() => { changeIsOpened(false) }} activeClassName="active" to={'/' + data.slug}>
+        <StyledLink key={data.name} onClick={() => { changeIsOpened(false) }} activeClassName="active" className="nav-item" to={'/' + data.slug}>
             {data.name}
         </StyledLink>
     )
@@ -56,7 +56,8 @@ const StyledLink = styled(Link)`
     }
 
     @media (max-width: 1100px) {
-        padding: 0;
+        padding: 0 8px;
+        margin: 0 -8px;
         margin-bottom: 32px;
 
         :last-child{

@@ -21,6 +21,14 @@ export default function Header({ data: { logo, menu } }) {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             document.addEventListener('scroll', eventListener)
+
+            let els = document.querySelectorAll('.nav-item')
+
+            els[els.length - 1].addEventListener('keydown', (event) => {
+                if (event.key === 'Tab') {
+                    changeIsOpened(false)
+                }
+            })
         }
     }, [])
 
@@ -30,7 +38,7 @@ export default function Header({ data: { logo, menu } }) {
                 <Flex>
                     <ImageWrapper>
                         <Link aria-label='link do strony głównej' to='/'>
-                            <Image image={logo.gatsbyImageData} alt={logo.alt}/>
+                            <Image image={logo.gatsbyImageData} alt={logo.alt} />
                         </Link>
                         <MobileOpen id='mobileOpen' aria-label="otwórzyć lub zamknąć meni mobilne" isOpened={isOpened} onClick={() => { changeIsOpened(!isOpened) }}>
                             <span></span>
@@ -238,7 +246,7 @@ const Nav = styled.nav`
 
         position: fixed;
         overflow: hidden;
-        top: 110px;
+        top: 109px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -246,7 +254,7 @@ const Nav = styled.nav`
 
         div{
             overflow: auto;
-            padding:  0 28.5px  28.5px  28.5px;
+            padding:  10px 28.5px  28.5px  28.5px;
             max-height: 100%;
             grid-template-columns: 1fr;
             width: 102%;
@@ -254,7 +262,7 @@ const Nav = styled.nav`
      }   
 
      @media(max-width: 500px){
-         top: 100px;
+         top: 99px;
          ul{
              width: 100%;
             padding:  0 16px  28.5px  16px;

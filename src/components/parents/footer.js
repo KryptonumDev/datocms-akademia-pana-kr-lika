@@ -23,11 +23,11 @@ export default function Footer({ data: { logo, navigation, socialLinks, text, au
                             </li>
                         ))}
                     </ul>
-                </Navigation>   
+                </Navigation>
                 <Social>
                     {socialLinks.map(el => (
                         <li key={el.link}>
-                            <Link to={ el.link} aria-label={el.ariaLabel}>
+                            <Link to={el.link} aria-label={el.ariaLabel}>
                                 {(() => {
                                     switch (el.icon) {
                                         case SOCIAL_ICONS.FACEBOOK:
@@ -45,7 +45,7 @@ export default function Footer({ data: { logo, navigation, socialLinks, text, au
                     ))}
                 </Social>
                 <Authors>
-                    <StructuredText data={authors}/>
+                    <StructuredText data={authors} />
                 </Authors>
             </Container>
         </Wrapper>
@@ -237,6 +237,47 @@ const Authors = styled.div`
 
         }
     }
+
+    :last-of-type {
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s linear;
+      --brand-color: rgb(48, 187, 120);
+
+      :after {
+        content: '';
+        position: absolute;
+        left: 0px;
+        bottom: -1px;
+        width: 100%;
+        height: 1px;
+        background-color: var(--brand-color);
+        transform-origin: right center;
+        transition: transform 0.2s linear;
+        transform: scaleX(0);
+      }
+
+      :hover {
+        color: var(--brand-color);
+        :after {
+          transform-origin: left center;
+          transform: scaleX(1);
+        }
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--brand-color);
+        color: var(--brand-color);
+      }
+
+      :nth-of-type(2) {
+        --brand-color: rgb(104, 110, 235);
+      }
+    }
+  }
 
     @media (max-width: 1024px){
         margin: 16px 0 0 0;
