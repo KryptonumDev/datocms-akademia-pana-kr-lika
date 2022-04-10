@@ -176,7 +176,7 @@ const Label = styled.label`
         position: absolute;
         bottom: 0;
         left: 0;
-        color: #EF4444;
+        color:  #DC2626;
         font-size: 12px;
     }
 
@@ -223,7 +223,7 @@ const Input = styled.input`
     color: #394C71;
 
     &.error{
-        border-color: #EF4444;
+        border-color:  #DC2626;
     }
 
     &::placeholder{
@@ -247,7 +247,7 @@ const TextArea = styled.textarea`
     color: #394C71;
 
     &.error{
-        border-color: #EF4444;
+        border-color:  #DC2626;
     }
 
     &::placeholder{
@@ -272,7 +272,7 @@ const ButtonAndAnswer = styled.div`
     }
     p{
         &.error{
-            color: #EF4444;
+            color:  #DC2626;
         }
     }
 

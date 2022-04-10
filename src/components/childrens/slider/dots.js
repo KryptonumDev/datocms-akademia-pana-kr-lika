@@ -22,6 +22,11 @@ const DotsWrapper = styled.div`
     margin: 50px auto 0;
     width: fit-content;
 
+    @media (max-width: 764px){
+        grid-template-columns: repeat(${({ itemsCount }) => itemsCount}, 32px);
+        grid-column-gap: 24px;
+
+    }
 `
 
 const Button = styled.button`
@@ -33,5 +38,17 @@ const Button = styled.button`
     :nth-child(${props => props.position + 1}){
         background-color: #55B83B; 
     }
+    &:hover{
+        background-color: #55B83B; 
+    }
 
+    :focus-visible {
+        outline: 2px solid #55B83B;
+    }
+
+    @media (max-width: 764px) {
+        width: 32px;
+        height: 32px;
+        
+    }
 `

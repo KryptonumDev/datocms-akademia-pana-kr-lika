@@ -123,7 +123,7 @@ const Grid = styled.div`
         grid-gap: 24px;
     }
 
-    @media (max-width: 500px){
+    @media (max-width: 600px){
         grid-template-areas:
         'a'
         'b'
@@ -140,7 +140,7 @@ const Image = styled(GatsbyImage)`
     :hover{
         img{
             transform-origin: 50% 50%;
-            transform: scale(1.1);
+            transform: scale(1.04);
         }
     }
 
@@ -160,7 +160,7 @@ const Image = styled(GatsbyImage)`
 
 const Title = styled.div`
     h1,h2,h3,h4,h5,h6{
-        margin-bottom: clamp(80px, 16vw, 120px);
+        margin-bottom: clamp(40px, 16vw, 120px);
         font-weight: 700;
         font-size: clamp(32px, 6vw, 48px);
         line-height: 100%;

@@ -44,6 +44,10 @@ export default function Blog({ data: { sectionTitle, linkText, linkUrl }, posts:
 
 const Wrapper = styled.section`
     margin: clamp(100px, 25vw, 160px) 0;
+
+    @media(max-width: 760px){
+        margin: clamp(100px, 25vw, 160px) 0 0 0;
+    }
 `
 
 const Flex = styled.div`
@@ -90,7 +94,7 @@ const Grid = styled.div`
     @media (max-width: 760px) {
         grid-template-columns: 1fr;
         max-width: 500px;
-        margin: clamp(50px, 7.6vw, 100px) auto;
+        margin: clamp(50px, 7.6vw, 100px) 0;
         
     }
 `
@@ -209,6 +213,16 @@ const GridItem = styled.div`
         }
         .flex{
             padding: 48px 16px 16px 16px;
+        }
+    }
+
+    @media (max-width: 320px) {
+        .flex{
+            flex-direction: column-reverse;
+
+            .date{
+                margin-bottom: 8px;
+            }
         }
     }
 `

@@ -58,6 +58,10 @@ const Title = styled.div`
         @media (max-width: 500px) {
                 text-align: left;
         }
+
+        @media (max-width: 360px) {
+            font-size: 28px;
+        }
     }
 `
 
@@ -65,6 +69,7 @@ const SliderItem = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    cursor: grab;
 
     @media (max-width: 764px) {
         flex-direction: column-reverse;
@@ -73,6 +78,7 @@ const SliderItem = styled.div`
 
 const TextPart = styled.div`
     max-width: 470px;
+
 `
 const QuoteText = styled.div`
     p{
@@ -81,6 +87,14 @@ const QuoteText = styled.div`
         line-height: 180%;
         color: #394C71;
         margin: 30px 0;
+        &::selection{
+            background-color:  transparent;
+        }
+
+
+        @media (max-width: 360px) {
+            line-height: 150%;   
+        }
     }
 `
 
@@ -94,6 +108,9 @@ const QuoteAuthor = styled.div`
         letter-spacing: -0.5px;
         color: #203662;
         position: relative;
+        &::selection{
+            background-color:  transparent;
+        }
 
         &::before{
             content:'';
@@ -118,6 +135,9 @@ const QuotePlace = styled.div`
         line-height: 170%;
         color: #394C71; 
         margin-top: 8px;
+        &::selection{
+            background-color:  transparent;
+        }
     }
 `
 
@@ -134,7 +154,7 @@ const Image = styled(GatsbyImage)`
 
 const ImageWrapper = styled.div`
     position: relative;
-
+    pointer-events: none;
     .right{
         position: absolute;
         top: 50px;

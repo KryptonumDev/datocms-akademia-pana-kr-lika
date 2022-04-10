@@ -60,6 +60,10 @@ const Title = styled.div`
         @media (max-width: 500px) {
             letter-spacing: -1.5px;
         }
+
+        @media(max-width: 320px) {
+            font-size: 30px;
+        }
     }
 `
 

@@ -4,14 +4,14 @@ import NavigationItemClassick from "./navigation-classick"
 import NavigationItemMega from "./navigation-mega"
 
 export default function Navigation({ menu, changeIsOpened }) {
-    return menu.map(el => {
+    return menu.map((el, index) => {
         switch (el.__typename) {
             case NAVIGATION.CLASSICK:
                 return <NavigationItemClassick changeIsOpened={changeIsOpened} data={el} />
             case NAVIGATION.MEGA:
-                return <NavigationItemMega changeIsOpenedOuter={changeIsOpened} data={el} />
+                return <NavigationItemMega index={index} changeIsOpenedOuter={changeIsOpened} data={el} />
             default:
-                return <></>
+                return null
         }
     })
 }

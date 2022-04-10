@@ -62,7 +62,14 @@ const Text = styled.div`
                 position: absolute;
                 left: 0;
                 top: 0;
+                transition: transform .4s cubic-bezier(0.215, 0.610, 0.355, 1);
                 transform: translateY(16%);
+            }
+
+            &:hover{
+                &::before{
+                    transform: translateY(16%) translateX(8px);
+                }
             }
 
             p{

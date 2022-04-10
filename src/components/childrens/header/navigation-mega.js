@@ -1,11 +1,12 @@
 import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useEffect, useState } from "react"
+import React, { useDebugValue, useEffect, useState } from "react"
 import styled from "styled-components"
 import OpenArrow from './../../../resources/faq.svg'
 import { Arrow } from "../../../resources/arrow"
+import { globalHistory } from '@reach/router'
 
-export default function NavigationItemMega({ changeIsOpenedOuter, data: { slug, title, menuItem } }) {
+export default function NavigationItemMega({ index, changeIsOpenedOuter, data: { slug, title, menuItem } }) {
 
     const [isOpened, changeIsOpened] = useState(false)
 
@@ -16,37 +17,37 @@ export default function NavigationItemMega({ changeIsOpenedOuter, data: { slug, 
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            document.addEventListener('keydown', (event) => {   
-                if(event.key === 'Escape'){
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
                     changeIsOpened(false)
-                    changeIsOpenedOuter(false)
+                    let els = document.querySelectorAll('.nav-item')
+
+                    els[index + 1].focus()
                 }
             })
 
             document.getElementById('last-tab').addEventListener('keydown', (event) => {
-                if(event.key === 'Tab'){
+                if (event.key === 'Tab') {
                     changeIsOpened(false)
                 }
             })
 
-            document.getElementById('first-tab').addEventListener('keydown', (event) => {
-                if(event.key === 'Tab'){
-                    changeIsOpened(true)
-                }
+            globalHistory.listen(({ action }) => {
+                if (action === 'PUSH') changeIsOpened(false)
             })
         }
-    }, [])
+    }, [changeIsOpenedOuter, index])
 
     return (
         <React.Fragment key={title}>
-            <StyledLink id='first-tab' onClick={() => { changeIsOpened(!isOpened) }}>
+            <StyledLink isOpened={isOpened} className='nav-item' id='first-tab' onClick={() => { changeIsOpened(!isOpened) }}>
                 {title}<img alt="strzałeczka dekoracyjna" src={OpenArrow} />
             </StyledLink>
             <CloseOut isOpened={isOpened} onClick={() => { changeIsOpened(!isOpened) }} />
             <MegaMeni isOpened={isOpened}>
                 <ul className="ul">
                     {menuItem.map(el => (
-                        <li key={el.name}>
+                        <li className="mega-tab" key={el.name}>
                             <Link aria-label={'link do strony warsztatu ' + el.name} tabIndex={isOpened ? '0' : '-1'} onClick={() => { Close() }} to={'/warsztaty/' + el.slug} />
                             <Image className="img" image={el.img.gatsbyImageData} alt={el.img.alt} />
                             <p className="title">{el.name}</p>
@@ -94,11 +95,13 @@ const StyledLink = styled.button`
     
     img{
         margin-left: 14px;
+        transition: transform .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+        transform: ${props => props.isOpened ? 'rotateZ(180deg)' : 'rotateZ(0)'}
     }
 
     @media (max-width: 1100px) {
         padding: 0 8px;
-        margin: 0 -8px;
+        margin: 0 -8px 4px -8px;
     }
 `
 

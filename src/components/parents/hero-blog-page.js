@@ -15,8 +15,8 @@ export default function Hero({ data: { hero, post } }) {
                     <Title><StructuredText data={hero.sectionTitle} /></Title>
                     {/* <input placeholder="Szukaj" /> */}
                 </Flex>
-                <Content>
-                    <Link to={post.slug}>
+                <Content className='desctop'>
+                    <Link tabIndex='-1' to={post.slug}>
                         <Image image={post.coverImage.gatsbyImageData} alt={post.coverImage.alt} />
                     </Link>
                     <PostCard to={post.slug}>
@@ -34,6 +34,26 @@ export default function Hero({ data: { hero, post } }) {
                             </span>
                         </div>
                     </PostCard>
+                </Content>
+                <Content className='mobile'>
+                    <Link to={post.slug}>
+                        <Image image={post.coverImage.gatsbyImageData} alt={post.coverImage.alt} />
+                        <PostCard as='div' >
+                            <div className="new">
+                                Nowy wpis
+                            </div>
+                            <h2>{post.title}</h2>
+                            <p>{post.shortText}</p>
+                            <div className="flex">
+                                <span className="next">
+                                    Czytaj dalej<Arrow />
+                                </span>
+                                <span className="date">
+                                    {DateParser(post.date)}
+                                </span>
+                            </div>
+                        </PostCard>
+                    </Link>
                 </Content>
             </Container>
         </Wrapper>
@@ -93,11 +113,16 @@ const Title = styled.div`
 const Image = styled(GatsbyImage)`
     width: 100%;
     border-radius: 25px;
+    height: 340px;
 
     @media (max-width: 760px) {
         width: 100%;
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
+    }
+
+    @media (max-width: 500px){
+        height: 259px;
     }
 `
 
@@ -203,6 +228,16 @@ const PostCard = styled(Link)`
     @media (max-width: 500px){
         padding: 16px;
     }
+
+    @media (max-width: 320px) {
+        .flex{
+            flex-direction: column-reverse;
+
+            .date{
+                margin-bottom: 8px;
+            }
+        }
+    }
 `
 
 const Content = styled.div`
@@ -216,14 +251,28 @@ const Content = styled.div`
         border-radius: 25px;
     }
 
-    
+    &.mobile{
+        display: none;
+    }
 
 
     @media (max-width: 760px) {
         flex-direction: column;
         width: 100%;
         max-width: 500px;
-        margin: 50px auto 0;
+        margin: 50px 0 0 0;
+
+        &.desctop{
+            display: none;
+        }
+
+        &.mobile{
+            display: block;
+            margin-bottom: 4px;
+            a{
+                display: block;
+            }
+        }
     }
 
     @media (max-width: 600px) {

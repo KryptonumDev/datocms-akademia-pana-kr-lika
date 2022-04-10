@@ -5,11 +5,11 @@ import { KontaktImage, KontaktLeft, KontaktRight } from '../../resources/kontakt
 import { Container } from '../../styles/styles'
 import KontaktForm from '../childrens/kontakt'
 
-export default function Kontakt({ data: { title, text } }) {
+export default function Kontakt({ data: { sectionTitle, text } }) {
     return (
         <Wrapper>
             <LocContainer>
-                <Title><StructuredText data={title} /></Title>
+                <Title><StructuredText data={sectionTitle} /></Title>
                 <Text><StructuredText data={text} /></Text>
                 <Flex>
                     <ImageWrapper>

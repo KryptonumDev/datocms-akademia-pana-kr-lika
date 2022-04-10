@@ -7,20 +7,26 @@ import { Container } from './../../styles/styles'
 
 export default function Header({ data: { logo, menu } }) {
 
-    const eventListener = () => {
-        if (window.scrollY > 0 && !isBackground) {
-            changeIsBackground(true)
-        } else {
-            changeIsBackground(false)
-        }
-    }
-
     const [isOpened, changeIsOpened] = useState(false)
     const [isBackground, changeIsBackground] = useState(false)
 
+
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            document.addEventListener('scroll', eventListener)
+            document.addEventListener('scroll', () => {
+                if (window.scrollY > 0 && !isBackground) {
+                    changeIsBackground(true)
+                } else {
+                    changeIsBackground(false)
+                }
+            })
+
+            document.getElementById('mobileOpen').addEventListener('keydown', (event) => {
+                if (event.key === 'Tab') {
+                    changeIsOpened(true)
+                }
+
+            })
 
             let els = document.querySelectorAll('.nav-item')
 
@@ -77,7 +83,6 @@ const ImageWrapper = styled.div`
 
     @media(max-width: 500px){
         padding: 28.5px 16px;
-
     }
 `
 
@@ -86,6 +91,10 @@ const Image = styled(GatsbyImage)`
 
     @media (max-width: 500px) {
         max-width: 230px;
+    }
+
+    @media (max-width: 320px) {
+        max-width: 200px;
     }
 `
 
@@ -160,8 +169,10 @@ const MobileOpen = styled.button`
         display: none;
     }
 
+    aspect-ratio: 1/1;
     width: 36px;
     height: 36px;
+    margin-left: 8px;
     background: #55B83B;
     border-radius: 50px;
     position: relative;
@@ -268,5 +279,9 @@ const Nav = styled.nav`
             padding:  0 16px  28.5px  16px;
 
          }
+     }
+
+     @media (max-width: 320px) {
+         top: 94px;
      }
 `

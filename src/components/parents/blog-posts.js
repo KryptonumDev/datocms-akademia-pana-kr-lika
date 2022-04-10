@@ -14,8 +14,10 @@ export default function BlogPosts({ data: { categories, posts, content: { sectio
 
     const [preFiltredArray, changePreFiltredArray] = useState([...posts])
     const [filtredArray, changeFiltredArray] = useState([...posts])
+    const [currentFilter, changeCurrentFilter] = useState('all')
 
     const changeFilter = (filterSlug) => {
+        changeCurrentFilter(filterSlug)
         filterSlug === 'all'
             ? changeFiltredArray(preFiltredArray)
             : changeFiltredArray(preFiltredArray.filter(el => el.category.slug === filterSlug))
@@ -39,9 +41,9 @@ export default function BlogPosts({ data: { categories, posts, content: { sectio
                             <Flex>
                                 <Title><StructuredText data={sectionTitle} /></Title>
                                 <Categories>
-                                    <Button className="buttonFilter" id='all' onClick={() => { changeFilter('all') }} as='button'>Wszystkie wpisy</Button>
+                                    <Button disabled={currentFilter === 'all'} className="buttonFilter" id='all' onClick={() => { changeFilter('all') }} as='button'>Wszystkie wpisy</Button>
                                     {categories.map(el => (
-                                        <Button key={el.name} className="buttonFilter" id={el.slug} onClick={() => { changeFilter(el.slug) }} as='button'>{el.name}</Button>
+                                        <Button disabled={currentFilter === el.slug} key={el.name} className="buttonFilter" id={el.slug} onClick={() => { changeFilter(el.slug) }} as='button'>{el.name}</Button>
                                     ))}
                                 </Categories>
                             </Flex>
@@ -165,7 +167,7 @@ const PostsGrid = styled.div`
 
     @media (max-width: 760px) {
         max-width: 500px;
-        margin: 32px auto 0 auto;
+        margin: 32px 0 0 0;
         grid-template-columns: 1fr;
     }
 `
@@ -285,6 +287,16 @@ const Post = styled(motion.div)`
         }
         .flex{
             padding: 48px 16px 16px 16px;
+        }
+    }
+
+    @media (max-width: 320px) {
+        .flex{
+            flex-direction: column-reverse;
+
+            .date{
+                margin-bottom: 8px;
+            }
         }
     }
 
