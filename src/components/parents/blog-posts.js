@@ -29,7 +29,9 @@ export default function BlogPosts({ data: { categories, posts, content: { sectio
     }
 
     useEffect(() => {
-        document.getElementById('all').classList.add('active')
+        if (preFiltredArray.length > 0) {
+            document.getElementById('all').classList.add('active')
+        }
     }, [])
 
     return (
@@ -91,11 +93,15 @@ export default function BlogPosts({ data: { categories, posts, content: { sectio
                         </Container>
                     </Wrapper >
                 )
-                : null
+                : <PlaceHolder />
             }
         </React.Fragment>
     )
 }
+
+const PlaceHolder = styled.div`
+    margin-top: clamp(60px, 16vw, 120px);
+`
 
 const Wrapper = styled.section`
     margin-top: clamp(60px, 16vw, 120px);

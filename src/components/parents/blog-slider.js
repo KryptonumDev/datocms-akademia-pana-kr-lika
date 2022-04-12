@@ -9,36 +9,41 @@ import { Arrow } from '../../resources/arrow'
 
 export default function Blog({ data: { sectionTitle, linkText, linkUrl }, posts: { nodes: posts } }) {
     return (
-        <Wrapper>
-            <Container>
-                <Flex>
-                    <Title><StructuredText data={sectionTitle} /></Title>
-                    <SLink to={linkUrl}>{linkText}</SLink>
-                </Flex>
-                <Grid>
-                    {posts.map(el => (
-                        <Link key={el.slug} to={'/blog/' + el.slug}>
-                            <GridItem>
-                                <div className='category'>{el.category.name}</div>
-                                <div>
-                                    <Image image={el.coverImage.small} alt={el.coverImage.alt} />
-                                    <h3>{el.title}</h3>
-                                    <p>{el.shortText}</p>
-                                </div>
-                                <div className="flex">
-                                    <span className="next">
-                                        Czytaj dalej <Arrow/>
-                                    </span>
-                                    <span className="date">
-                                        {DateParser(el.date)}
-                                    </span>
-                                </div>
-                            </GridItem>
-                        </Link>
-                    ))}
-                </Grid>
-            </Container>
-        </Wrapper>
+        <React.Fragment>
+            {posts.length > 0
+                ? <Wrapper>
+                    <Container>
+                        <Flex>
+                            <Title><StructuredText data={sectionTitle} /></Title>
+                            <SLink to={linkUrl}>{linkText}</SLink>
+                        </Flex>
+                        <Grid>
+                            {posts.map(el => (
+                                <Link key={el.slug} to={'/blog/' + el.slug}>
+                                    <GridItem>
+                                        <div className='category'>{el.category.name}</div>
+                                        <div>
+                                            <Image image={el.coverImage.small} alt={el.coverImage.alt} />
+                                            <h3>{el.title}</h3>
+                                            <p>{el.shortText}</p>
+                                        </div>
+                                        <div className="flex">
+                                            <span className="next">
+                                                Czytaj dalej <Arrow />
+                                            </span>
+                                            <span className="date">
+                                                {DateParser(el.date)}
+                                            </span>
+                                        </div>
+                                    </GridItem>
+                                </Link>
+                            ))}
+                        </Grid>
+                    </Container>
+                </Wrapper>
+                : <Wrapper />
+            }
+        </React.Fragment>
     )
 }
 
