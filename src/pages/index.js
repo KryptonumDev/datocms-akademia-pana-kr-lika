@@ -22,7 +22,7 @@ export default function Index({ data: { site, datoCmsHomepage, posts } }) {
       <Hero data={datoCmsHomepage.heroSection[0]} />
       <TwoColumnRepeater data={datoCmsHomepage.repeater[0]} repeaterType="button" />
       <Testomontials data={datoCmsHomepage.opinje[0]} />
-      <Blog posts={posts} data={datoCmsHomepage.blog[0]} />
+      <Blog posts={posts} />
     </main>
   )
 }
@@ -94,13 +94,6 @@ export const query = graphql`
             value
           }
         }
-      }
-      blog {
-        sectionTitle{
-          value
-        }
-        linkText
-        linkUrl
       }
     }
     posts: allDatoCmsPost(sort: { fields: date, order: DESC }, limit: 2) {

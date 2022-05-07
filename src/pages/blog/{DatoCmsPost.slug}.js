@@ -18,7 +18,7 @@ export default function Post({ data: { site, post, morePosts } }) {
       />
       <Helmet htmlAttributes={{ lang: 'pl' }} />
       <Content data={post} />
-      <Blog data={post.otherPosts[0]} posts={morePosts} />
+      <Blog posts={morePosts} />
     </main>
   );
 }
@@ -43,19 +43,19 @@ export const query = graphql`
       }
       content {
         value
-        blocks 
+        blocks {
+          id: originalId
+          img {
+            alt
+            gatsbyImageData
+            title
+          }
+        }
       }
       date
       coverImage {
         alt
         gatsbyImageData(width: 1500)
-      }
-      otherPosts {
-        sectionTitle{
-          value
-        }
-        linkUrl
-        linkText
       }
     }
     morePosts: allDatoCmsPost(

@@ -27,7 +27,7 @@ export default function Footer({ data: { logo, navigation, socialLinks, text, au
                 <Social>
                     {socialLinks.map(el => (
                         <li key={el.link}>
-                            <Link to={el.link} aria-label={el.ariaLabel}>
+                            <Link target='_blank' to={el.link} aria-label={el.ariaLabel}>
                                 {(() => {
                                     switch (el.icon) {
                                         case SOCIAL_ICONS.FACEBOOK:

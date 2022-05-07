@@ -4,18 +4,27 @@ import styled from 'styled-components'
 import { Container, OutlinedLink } from '../../styles/styles'
 import { Link } from 'gatsby'
 import { DateParser } from '../../functions/datae-parser'
-import { StructuredText } from 'react-datocms'
 import { Arrow } from '../../resources/arrow'
 
-export default function Blog({ data: { sectionTitle, linkText, linkUrl }, posts: { nodes: posts } }) {
+export default function Blog({ posts: { nodes: posts } }) {
+
+    const url = typeof window !== 'undefined' ? window.location.pathname : '';
     return (
         <React.Fragment>
             {posts.length > 0
                 ? <Wrapper>
                     <Container>
                         <Flex>
-                            <Title><StructuredText data={sectionTitle} /></Title>
-                            <SLink to={linkUrl}>{linkText}</SLink>
+                            <Title>
+                                <h2>
+                                    {url === '/'
+                                        ? "Co u nas nowego?"
+                                        : "Podobne artykuły"
+                                    }
+
+                                </h2>
+                            </Title>
+                            <SLink to={'/blog/'}>Zobacz wszystkie posty</SLink>
                         </Flex>
                         <Grid>
                             {posts.map(el => (
@@ -65,7 +74,7 @@ const Flex = styled.div`
 `
 
 const Title = styled.div`
-    h1,h2,h3,h4,h5,h6{
+    h1,h2,h3,h4,h5,h6,p{
         font-weight: 700;
         font-size: clamp(32px, 6.4vw, 48px);
         line-height: 100%;

@@ -44,9 +44,18 @@ export default function BlogPosts({ data: { categories, posts, content: { sectio
                                 <Title><StructuredText data={sectionTitle} /></Title>
                                 <Categories>
                                     <Button disabled={currentFilter === 'all'} className="buttonFilter" id='all' onClick={() => { changeFilter('all') }} as='button'>Wszystkie wpisy</Button>
-                                    {categories.map(el => (
-                                        <Button disabled={currentFilter === el.slug} key={el.name} className="buttonFilter" id={el.slug} onClick={() => { changeFilter(el.slug) }} as='button'>{el.name}</Button>
-                                    ))}
+                                    {categories.map(el => {
+                                        let isExist = false
+                                        preFiltredArray.every(innerEl => {
+                                            if (innerEl.category.slug === el.slug) {
+                                                isExist = true
+                                                return false
+                                            }
+                                        })
+                                        return isExist
+                                            ? <Button disabled={currentFilter === el.slug} key={el.name} className="buttonFilter" id={el.slug} onClick={() => { changeFilter(el.slug) }} as='button'>{el.name}</Button>
+                                            : null
+                                    })}
                                 </Categories>
                             </Flex>
                             <AnimateSharedLayout>

@@ -7,6 +7,7 @@ import { Container } from "../../styles/styles"
 import Quote from './../../resources/quotes.svg'
 
 export default function Content({ data: { category, content, shortText, title, slug, date, coverImage } }) {
+
     return (
         <Wrapper>
             <Container>
@@ -19,7 +20,10 @@ export default function Content({ data: { category, content, shortText, title, s
                     <Image image={coverImage.gatsbyImageData} alt={coverImage.alt} />
                 </ImageWrapper>
                 <ContentBox>
-                    <StructuredText data={content} />
+                    <StructuredText
+                        data={content}
+                        renderBlock={({ record }) => <ImageInside image={record.img.gatsbyImageData} alt={record.img.alt} title={record.img.title} />}
+                    />
                 </ContentBox>
             </Container>
         </Wrapper>
@@ -196,8 +200,6 @@ const ContentBox = styled.div`
     }
 
     img{
-        width: 100%;
-        border-radius: 25px;
     }
 
     ul{
@@ -219,4 +221,11 @@ const ContentBox = styled.div`
             }
         }
     }
+`
+
+const ImageInside = styled(GatsbyImage)`
+    border-radius: 25px;
+    max-height: 555px;
+    width: fit-content;
+    margin: 0 auto 30px auto;
 `
