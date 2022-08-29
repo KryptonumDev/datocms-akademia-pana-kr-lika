@@ -9,7 +9,6 @@ export default function TwoColumnRepeater({ repeaterType, data: { sectionTitle, 
     return (
         <Wrapper>
             <Container>
-
                 <Title><StructuredText data={sectionTitle} /></Title>
                 <div>
                     {repeater.map(el => (
@@ -50,49 +49,49 @@ const Item = styled.div`
 
 
     ${({ repeaterType }) => repeaterType === 'persons' && css`
-    justify-content: space-between;
-    :nth-child(2n - 1) {
-        flex-direction: row-reverse; 
-        .imgPart{
-            margin-left: clamp(110px, 15.2vw, 220px);
-        }
-    }
-
-    :nth-child(2n) {
-        .imgPart{
-            margin-right: clamp(60px, 8.3vw, 120px);
-        }
-    }
-
-    @media(max-width: 1023px){
-        .textPart{
-            margin-top: 50px;
-        }
-        flex-direction: column;
-        max-width: 630px;
-        margin: clamp(100px, 25vw, 160px) auto 0;
-        :nth-child(n){
-            flex-direction: column;
-            margin-top: clamp(100px, 25vw, 160px);
-
+        justify-content: space-between;
+        :nth-child(2n - 1) {
+            flex-direction: row-reverse; 
             .imgPart{
-                margin: 0;
+                margin-left: clamp(110px, 15.2vw, 220px);
             }
         }
-    }
 
-    @media(max-width: 764px){
-        .textPart{
-            margin-top: 80px;
+        :nth-child(2n) {
+            .imgPart{
+                margin-right: clamp(60px, 8.3vw, 120px);
+            }
         }
 
-        :nth-child(n){
-            max-width: unset;
-            margin: 0 ;
-            margin-top: 60px;
+        @media(max-width: 1023px){
+            .textPart{
+                margin-top: 50px;
+            }
+            flex-direction: column;
+            max-width: 630px;
+            margin: clamp(100px, 25vw, 160px) auto 0;
+            :nth-child(n){
+                flex-direction: column;
+                margin-top: clamp(100px, 25vw, 160px);
+
+                .imgPart{
+                    margin: 0;
+                }
+            }
         }
 
-    }
+        @media(max-width: 764px){
+            .textPart{
+                margin-top: 80px;
+            }
+
+            :nth-child(n){
+                max-width: unset;
+                margin: 0 ;
+                margin-top: 60px;
+            }
+
+        }
     `}
 
     ${({ repeaterType }) => repeaterType === 'button' && css`

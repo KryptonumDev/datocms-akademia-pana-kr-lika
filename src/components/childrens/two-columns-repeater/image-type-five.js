@@ -63,12 +63,10 @@ const Wrapper = styled.div`
 `
 
 const Image = styled(GatsbyImage)`
-    border-radius: 25px;
+    border-radius: 100%;
     position: relative;
     z-index: 2;
-    max-width: 500px;
     width: 100%;
-    aspect-ratio: 1/1;
     margin-left: 60px;
 
     @media (max-width:500px){

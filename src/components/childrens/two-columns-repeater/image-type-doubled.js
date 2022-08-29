@@ -90,6 +90,7 @@ const MainImage = styled(GatsbyImage)`
 
 const AdditionalImage = styled(GatsbyImage)`
     width: 43.5%;
+    max-height: 80%;
     border-radius: 25px;
     position: absolute;
     z-index: 2;
