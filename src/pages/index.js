@@ -96,7 +96,7 @@ export const query = graphql`
         }
       }
     }
-    posts: allDatoCmsPost(sort: { fields: date, order: DESC }, limit: 2) {
+    posts: allDatoCmsPost(sort: {date: DESC}, limit: 2) {
       nodes {
         title
         slug

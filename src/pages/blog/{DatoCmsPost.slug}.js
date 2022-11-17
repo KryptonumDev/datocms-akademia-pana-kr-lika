@@ -59,7 +59,7 @@ export const query = graphql`
       }
     }
     morePosts: allDatoCmsPost(
-      sort: { fields: date, order: DESC }
+      sort: {date: DESC},
       limit: 2
       filter: { id: { ne: $id } }
     ) {
